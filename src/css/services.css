@@ -1,0 +1,20 @@
+#service_container{
+    height: 500px;
+}
+#entities {
+    border-left:0;
+    border-top:0;
+    border-bottom:0;
+}
+.box {
+  
+}
+.box_size {
+    border-top: 0.01;
+    border-top:0;
+    border-right: 0;
+    border-left:0;
+}
+.message_snipet {
+    font-size: small;
+}

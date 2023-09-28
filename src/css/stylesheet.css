@@ -1,0 +1,50 @@
+
+input {
+    height:50%;
+    margin-left:5px;
+}
+
+.row_elements {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+/*Login section*/
+#login_div{
+    display:grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#user_input {
+    margin-left: 16%;
+}
+/*Profile_section*/
+.profile_icons {
+    justify-content: space-evenly;
+    color:black; 
+}
+.icon {
+    padding:15px;
+    background-color: white;
+    border-radius: 100px;
+    height: 18px;
+   
+}
+#x {
+    color:red
+}
+#heart {
+    color:green;
+}
+#ray {
+    color:rgb(83, 10, 122);
+}
+#refresh {
+    color:rgb(181, 148, 16);
+}
+#star {
+    color:rgb(0, 162, 255);
+}
