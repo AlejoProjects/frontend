@@ -6,6 +6,7 @@ import {
 import "../css/ProfileCenter.css";
 import persona from "../assets/persona.png";
 import NavMenu from "./nav";
+import InformacionUsuario from "./userInformation";
 //import { useParams } from "react-router-dom";
 const ProfileCenter = () => {
   // const {id} = useParams();
@@ -23,7 +24,6 @@ const ProfileCenter = () => {
       .then((response) => response.json())
       .then((jsonData) => {
         size = jsonData.message.length;
-        console.log(size);
       })
       .catch((error) => console.log("Ocurrió un error en la consulta"));
   });
@@ -32,7 +32,7 @@ const ProfileCenter = () => {
       .then((response) => response.json())
       .then((jsonData) => {
         setData(jsonData.message[counter]);
-        console.log("data "+ data.appellido_persona);
+        console.log("data "+ data.calificacion);
       })
       .catch((error) => console.log("Ocurrió un error en la consulta"));
   }
@@ -40,7 +40,8 @@ const ProfileCenter = () => {
     <>
       <NavMenu></NavMenu>
       <div>
-        <h3>
+      <InformacionUsuario info={[data.nombre_persona,data.apellido_persona,data.locacion,data.precio_servicio,data.perfil,data.calificacion]}></InformacionUsuario>
+       <h3>
           {data.nombre_persona}&nbsp;{data.apellido_persona}
         </h3>
         <img src={persona}></img>

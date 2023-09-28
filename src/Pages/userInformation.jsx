@@ -1,5 +1,5 @@
-
-const configuration = (info)=> {
+import '../css/profileCenter.css';
+const InformacionUsuario = ({info})=> {
 /**
  * info[0] = name
  * info[1] = apellido
@@ -22,4 +22,4 @@ const configuration = (info)=> {
     )
 };
 
-export default configuration;
+export default InformacionUsuario;
