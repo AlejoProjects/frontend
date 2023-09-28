@@ -2,3 +2,17 @@
     background-color: transparent;
     border:none;
 }
+#informacion_completa {
+    color:rgba(0, 0, 0, 0);
+    z-index: 1;
+    position:absolute;
+    display:grid;
+    grid-template-areas: 
+        "item1 item1 item1" 
+        "item2 . item3"
+        "item5 item5 item5";
+     
+}
+#informacion_completa:hover {
+    color:white;
+}
