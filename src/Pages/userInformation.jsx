@@ -15,9 +15,7 @@ const InformacionUsuario = ({info})=> {
                     <p id="item2">{info[2]}</p>
                     <p id="item3">{info[3]} </p>
                     <p id="item5">{info[5]} </p>
-                    <p id="item4">{info[4]}</p>
-                    
-                 
+                    <p id="item4">{info[4]}</p>               
             </div>
         </>
     )

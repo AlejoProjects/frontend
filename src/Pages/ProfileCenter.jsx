@@ -1,8 +1,6 @@
 import { useState , useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHeart,faX,faBolt,faRefresh,faStar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHeart,faX,faBolt,faRefresh,faStar,} from "@fortawesome/free-solid-svg-icons";
 import "../css/ProfileCenter.css";
 import persona from "../assets/persona.png";
 import NavMenu from "./nav";
@@ -48,7 +46,7 @@ const ProfileCenter = () => {
         <div className="row_elements profile_icons">
           <button
             className="elements"
-            onClick={() => {
+           onClick={() => {
               setCounter(counter - 1);
               if (counter <= 0) {
                 setCounter(size-1);
@@ -57,7 +55,12 @@ const ProfileCenter = () => {
           >
             <FontAwesomeIcon icon={faRefresh} className="icon" id="refresh" />
           </button>
-          <button className="elements">
+          <button className="elements" onClick={() => {
+              setCounter(counter + 1);
+              if (counter >= size - 1) {
+                setCounter(0);
+              } 
+            }}>
             <FontAwesomeIcon icon={faX} className="icon" id="x" />
           </button>
           <button className="elements">
