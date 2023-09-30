@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "../css/stylesheet.css";
 import NavMenu from "./nav";
 import { Link } from "react-router-dom";
