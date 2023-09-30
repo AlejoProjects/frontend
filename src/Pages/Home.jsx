@@ -5,6 +5,10 @@ import { useState } from 'react';
 /**
  * La función de home esta hecha para servir como login hacia la plataforma de tinder.
  * Al validar al usuario lo redirige la pagina de empresa o la pagina de persona.
+ * Falta la implementación de validación con el crud.
+ * Al validar se deben pasar los siguientes a todas las paginas:
+ * opción#1: id del usuario o empresa  Y si es una empresa o usuario normal
+ * opción#2: un array con los datos del usuario o empresa Y si es empresa o usuario normal
  * @returns  none
  */
 const Home = () => {
