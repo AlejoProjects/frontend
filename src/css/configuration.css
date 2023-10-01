@@ -1,0 +1,43 @@
+h2 {
+    margin-left: 30px;
+}
+.configComponent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.circularPicture {
+    border-radius: 90px;
+}
+.elementsContainer {
+    display:flex;
+    flex-direction: column;
+    justify-content:left;
+    align-items:flex-start;
+}
+.buttonContainer {
+    display: flex;
+    border-style: none;
+    width:35px;
+    height:35px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+#title{
+    display:flex;
+    flex-direction: row;
+   
+}
+#profilePicture {
+    width:70px;
+    height:70px;
+    background-color: rgba(128, 128, 128, 0.526);
+    padding-right: 2px;
+}
+#textComponent {
+    width:120px;
+}
+#icon {
+    width:15px;
+}
