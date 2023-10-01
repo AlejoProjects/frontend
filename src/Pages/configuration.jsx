@@ -19,6 +19,13 @@ const Configuration = () => {
         <ConfigurationElement valor="telefono"></ConfigurationElement>
         <ConfigurationElement valor="email"></ConfigurationElement>
       </div>
+      <div className="elementsContainer">
+        <h3>Información Sensible</h3>
+        <ConfigurationElement valor="nit"></ConfigurationElement>
+        <ConfigurationElement valor="status"></ConfigurationElement>
+        <ConfigurationElement valor="contraseña"></ConfigurationElement>
+
+      </div>
       <div></div>
   </>
   )
