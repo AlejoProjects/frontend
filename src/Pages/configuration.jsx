@@ -9,29 +9,14 @@ const Configuration = () => {
   let size = 0;
   let infoContainer = [];
   let nombres = [];
-  const iden = 'Personas';
-  const clasificador = (iden) => {
-    switch (iden) {
-      case 'Personas':
-        nombres = Object.keys(data);
-        nombres.forEach(async (key,index) => {
-          infoContainer.push(data[key]);
-        });
-        break;
-      case 'empresa':
-        nombres = Object.keys(data);
-        nombres.forEach(async (key,index) => {
-          infoContainer.push(data[key]);
-        });
-    }
-  };
+  const iden = 'empresas';
   /**Esta función es temporal, se borrara cuando sea implementada la validación del login*/
   const id_usuario = 1;
   useEffect(() => {
     fetchData();
   });
   const fetchData = async () => {
-    fetch(`http://localhost:3000/api/v1/Personas/`)
+    fetch(`http://localhost:3000/api/v1/`+iden)
       .then((response) => response.json())
       .then((jsonData) => {
 
@@ -43,7 +28,10 @@ const Configuration = () => {
   };
   /**Aqui finaliza la parte a ser removida del codigo */
   /**la idea es realizar el recorrido de contenido[i] con un map (recordarlo) */
-  clasificador(iden);
+  nombres = Object.keys(data);
+  nombres.forEach(async (key,index) => {
+    infoContainer.push(data[key]);
+  });
   const InformationMapping =infoContainer.map((item,index) => (
    
      <ConfigurationElement key={index} item={item} index={index} ident={iden} info={infoContainer} nombres={nombres}/>
