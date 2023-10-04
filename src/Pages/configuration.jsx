@@ -9,18 +9,19 @@ const Configuration = () => {
   let size = 0;
   let infoContainer = [];
   let nombres = [];
-  const iden = 'empresas';
+  const iden = 'Personas';
   /**Esta función es temporal, se borrara cuando sea implementada la validación del login*/
   const id_usuario = 1;
   useEffect(() => {
     fetchData();
   });
   const fetchData = async () => {
-    fetch(`http://localhost:3000/api/v1/`+iden)
+    fetch(`http://localhost:3000/api/v1/`+iden+"/"+id_usuario)
       .then((response) => response.json())
       .then((jsonData) => {
-
-        setData(jsonData.message[id_usuario]);
+      
+        setData(jsonData.message[0]);
+       
        
        
       })
