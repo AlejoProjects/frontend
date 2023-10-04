@@ -27,6 +27,9 @@ p {
     align-items: center;
     margin-left: 10px;
 }
+.edit {
+    display: none;
+}
 #title{
     display:flex;
     flex-direction: row;
@@ -38,7 +41,7 @@ p {
     background-color: rgba(128, 128, 128, 0.526);
     padding-right: 2px;
 }
-#textComponent {
+.textComponent {
     width:200px;
 }
 #icon {
