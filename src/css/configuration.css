@@ -4,10 +4,16 @@ h2 {
 p {
     text-align:left;
 }
+.fixedInfo{
+    display: flex;
+    flex-direction: row;
+
+}
 .configComponent {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content:space-between;
+
 }
 .circularPicture {
     border-radius: 90px;
@@ -17,6 +23,7 @@ p {
     flex-direction: column;
     justify-content:left;
     align-items:flex-start;
+ 
 }
 .buttonContainer {
     display: flex;
@@ -29,6 +36,7 @@ p {
 }
 .edit {
     display: none;
+   
 }
 #title{
     display:flex;

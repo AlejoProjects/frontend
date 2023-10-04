@@ -19,11 +19,7 @@ const Configuration = () => {
     fetch(`http://localhost:3000/api/v1/`+iden+"/"+id_usuario)
       .then((response) => response.json())
       .then((jsonData) => {
-      
         setData(jsonData.message[0]);
-       
-       
-       
       })
       .catch((error) => console.log("Ocurrió un error en la consulta"));
   };
@@ -31,6 +27,9 @@ const Configuration = () => {
   /**la idea es realizar el recorrido de contenido[i] con un map (recordarlo) */
   nombres = Object.keys(data);
   nombres.forEach(async (key,index) => {
+    if(key == 0){
+
+    }
     infoContainer.push(data[key]);
   });
   const InformationMapping =infoContainer.map((item,index) => (
@@ -48,7 +47,7 @@ const Configuration = () => {
           className="circularPicture"
           id="profilePicture"
         ></img>
-        <h2>nombre apellido</h2>
+        <h2>{infoContainer[1]} {infoContainer[2]}</h2>
       </div>
       
       <div className="elementsContainer">
