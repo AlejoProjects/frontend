@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import NavMenu from "./nav";
 import persona from "../assets/persona.png";
@@ -7,35 +6,23 @@ import "../css/configuration.css";
 
 const Configuration = () => {
   const [data, setData] = useState([]);
-  let infoContainer = ["", "", "", "", "", ""];
-  const iden = "usuario";
+  let size = 0;
+  let infoContainer = [];
+  let nombres = [];
+  const iden = 'Personas';
   const clasificador = (iden) => {
     switch (iden) {
-      case "usuario":
-        infoContainer = [
-          data.id_persona,
-          data.nombre_persona,
-          data.email,
-          data.locacion,
-          data.password,
-          data.status,
-        ];
-        infoContainer.push(data.apellido_persona);
-        infoContainer.push(data.precio_servicio);
-        infoContainer.push(data.perfil);
-        infoContainer.push(data.calificacion);
+      case 'Personas':
+        nombres = Object.keys(data);
+        nombres.forEach(async (key,index) => {
+          infoContainer.push(data[key]);
+        });
         break;
-      case "empresa":
-        infoContainer = [
-          data.id,
-          data.nombre_empresa,
-          data.email,
-          data.direccion,
-          data.password,
-          data.estatus,
-        ];
-        infoContainer.push(data.nit);
-        infoContainer.push(data.telefono_empresa);
+      case 'empresa':
+        nombres = Object.keys(data);
+        nombres.forEach(async (key,index) => {
+          infoContainer.push(data[key]);
+        });
     }
   };
   /**Esta función es temporal, se borrara cuando sea implementada la validación del login*/
@@ -44,11 +31,12 @@ const Configuration = () => {
     fetchData();
   });
   const fetchData = async () => {
-    fetch(`http://localhost:3000/api/v1/Personas/` + `?&id=${id_usuario}`)
+    fetch(`http://localhost:3000/api/v1/Personas/`)
       .then((response) => response.json())
       .then((jsonData) => {
+
         setData(jsonData.message[id_usuario]);
-      
+       
        
       })
       .catch((error) => console.log("Ocurrió un error en la consulta"));
@@ -58,7 +46,7 @@ const Configuration = () => {
   clasificador(iden);
   const InformationMapping =infoContainer.map((item,index) => (
    
-     <ConfigurationElement key={index} item={item} index={index} ident={iden}/>
+     <ConfigurationElement key={index} item={item} index={index} ident={iden} info={infoContainer} nombres={nombres}/>
   ));
 
 
