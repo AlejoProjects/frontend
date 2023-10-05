@@ -7,7 +7,6 @@ const ConfigurationElement = (props) => {
   const divIden ="updateInfo"+ props.index;
   const fixedInfo ="fixedInfo"+ props.index;
   const [texto,setTexto] = useState('');
-
   const visibilidadTemporal = (valor)=> {
     const divTemporal = document.getElementById(divIden);
     switch(valor){
@@ -34,13 +33,26 @@ const ConfigurationElement = (props) => {
             const divFixed = document.getElementById(fixedInfo);
             visibilidadTemporal(0);
             divFixed.style.display = 'flex';
-            const valores = {
-              [props.nombres[0]]:props.info[0],
-              [props.nombres[3]]:props.info[3],
+            let valores = {};
+            switch(props.ident){
+            case 'personas':
+             valores = {
+              [props.comprobante[2]]:props.comprobante[3],
               [props.nombres[props.index]] : texto
-            };
+             };
+            break;
+            case 'empresas':
+              valores = {
+                [props.comprobante[2]]:props.comprobante[3],
+                [props.comprobante[4]]:props.comprobante[5],
+                [props.nombres[props.index]] : texto
+              };
+              break;
+
+          };
+            console.log(typeof(props.comprobante[0]));
             try {
-              const response = await axios.put(`http://localhost:3000/api/v1/${props.ident}/${props.info[0]}`, valores);
+              const response = await axios.put(`http://localhost:3000/api/v1/${props.ident}/${parseInt(props.id)}`, valores);
               console.log(response);// /api/v1/persona o empresa/id
               // Handle success, update UI if necessary
             } 
