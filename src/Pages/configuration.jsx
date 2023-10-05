@@ -7,23 +7,12 @@ import "../css/configuration.css";
 
 const Configuration = () => {
   const [data, setData] = useState([]);
-  let size = 0;
-  let infoContainer = [];
-  let nombres = [];
-  let nombreSensible =[];
-  let infoContainerSensible = [];
-  let comprobante = [];
-  let soloNombres = "";
   const iden = 'personas';
-  /**Esta función es temporal, se borrara cuando sea implementada la validación del login*/
+  let infoContainer = [],nombres = [],nombreSensible =[],infoContainerSensible = [],comprobante = [],soloNombres = "";
   const id_usuario = 1;
+  /**La función removeSensible clasifica la información recibida del backend en información sensible y no sensible con sus respectivos nombres*/
   const removeSensible = (nombres,infoContainer) => {
-    let resultadoNombres = [];
-    let resultadoInfo = [];
-    let resultadosNombresSensibles = [];
-    let resultadosInfoSensibles = [];
-    let comprobante = [];
-    let soloNombres = "";
+    let resultadoNombres = [],resultadoInfo = [],resultadosNombresSensibles = [],resultadosInfoSensibles = [],comprobante = [],soloNombres = "";
     if(iden == 'empresas'){
        resultadoNombres = [nombres[2],nombres[3],nombres[5]];
        resultadoInfo = [infoContainer[2],infoContainer[3],infoContainer[5]];
@@ -45,6 +34,7 @@ const Configuration = () => {
 
 
   };
+   /**Esta función es temporal, se borrara cuando sea implementada la validación del login*/
   useEffect(() => {
     fetch(`http://localhost:3000/api/v1/`+iden+"/"+id_usuario)
     .then((response) => response.json())
@@ -54,8 +44,6 @@ const Configuration = () => {
     .catch((error) => console.log("Ocurrió un error en la consulta"));
   });
 
-  /**Aqui finaliza la parte a ser removida del codigo */
-  /**la idea es realizar el recorrido de contenido[i] con un map (recordarlo) */
   nombres = Object.keys(data);
   nombres.forEach(async (key,index) => {
     if(key == 0){
@@ -63,17 +51,13 @@ const Configuration = () => {
     infoContainer.push(data[key]);
   });
   const resultado  = removeSensible(nombres,infoContainer);
-  nombres = resultado[0];
-  infoContainer = resultado[1];
-  nombreSensible = resultado[2];
-  infoContainerSensible = resultado[3];
-  comprobante = resultado[4];
-  soloNombres = resultado[5];
-
+  nombres = resultado[0],infoContainer = resultado[1],nombreSensible = resultado[2],infoContainerSensible = resultado[3],comprobante = resultado[4],soloNombres = resultado[5];
+  /**La función information mapping crea las opciones a modificar en tags de react segpun la info contenida en el backend */
   const InformationMapping =infoContainer.map((item,index) => (
    
      <ConfigurationElement key={index}  index={index} ident={iden} id={infoContainerSensible[0]} info={infoContainer} nombres={nombres} comprobante={comprobante}/>
   ));
+    /**La función informatioMapping sensible crea las opciones a modificar en tags de react segpun la info contenida en el backend para las variables sensibles que no seran editas pero si mostradas */
   const InformationMappingSensible =infoContainerSensible.map((item,index) => (
     <ConfigurationSensible key={index} item={item} index={index} ident={iden} info={infoContainerSensible} nombres={nombreSensible}/>
  ));
