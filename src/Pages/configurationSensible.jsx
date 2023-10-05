@@ -1,9 +1,6 @@
 const ConfigurationSensible = (props) => {
   const divIden ="updateInfoSensible"+ props.index;
   const fixedInfo ="fixedInfoSensible"+ props.index;
-  if(props.nombres == 'password'){
-
-  }
     return (
       <>
       <div className="configComponentSensible">

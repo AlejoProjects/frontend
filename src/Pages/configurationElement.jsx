@@ -7,6 +7,7 @@ const ConfigurationElement = (props) => {
   const divIden ="updateInfo"+ props.index;
   const fixedInfo ="fixedInfo"+ props.index;
   const [texto,setTexto] = useState('');
+  /**La función visibilidadTemporal muestra o esconde el div divIden para cada elemento recibido */
   const visibilidadTemporal = (valor)=> {
     const divTemporal = document.getElementById(divIden);
     switch(valor){
