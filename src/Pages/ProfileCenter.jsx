@@ -69,6 +69,7 @@ const ProfileCenter = () => {
           <button
             className="elements"
             onClick={() => {
+              //creación de servicio
               setCounter(counter + 1);
               if (counter >= size - 1) {
                 setCounter(0);
