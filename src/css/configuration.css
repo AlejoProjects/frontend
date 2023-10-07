@@ -1,0 +1,71 @@
+h2 {
+    margin-left: 30px;
+}
+p {
+    text-align:left;
+}
+.fixedInfo{
+    display: flex;
+    flex-direction: row;
+
+}
+.configComponent {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+
+}
+.circularPicture {
+    border-radius: 90px;
+}
+.elementsContainer {
+    display:flex;
+    flex-direction: column;
+    justify-content:left;
+    align-items:flex-start;
+ 
+}
+.buttonContainer {
+    display: flex;
+    border-style: none;
+    width:35px;
+    height:35px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+.edit {
+    display: none;
+   
+}
+#title{
+    display:flex;
+    flex-direction: row;
+   
+}
+#profilePicture {
+    width:70px;
+    height:70px;
+    background-color: rgba(128, 128, 128, 0.526);
+    padding-right: 2px;
+}
+.textComponent {
+    width:200px;
+}
+#icon {
+    width:15px;
+}
+/**Password section**/
+#fixedInfoPassword {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+#updateInfoPassword {
+    display:none;
+    grid-template-columns: 2fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    border-style: solid;
+    padding:5px;
+
+}
