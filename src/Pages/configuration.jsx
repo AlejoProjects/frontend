@@ -53,7 +53,7 @@ const Configuration = () => {
   });
   const resultado  = removeSensible(nombres,infoContainer);
   nombres = resultado[0],infoContainer = resultado[1],nombreSensible = resultado[2],infoContainerSensible = resultado[3],comprobante = resultado[4],soloNombres = resultado[5];
-  /**La función information mapping crea las opciones a modificar en tags de react segpun la info contenida en el backend */
+  /**La función information mapping crea las opciones a modificar en tags de react según la info contenida en el backend */
   const InformationMapping =infoContainer.map((item,index) => (
    
      <ConfigurationElement key={index}  index={index} ident={iden} id={infoContainerSensible[0]} info={infoContainer} nombres={nombres} comprobante={comprobante}/>
@@ -87,7 +87,7 @@ const Configuration = () => {
       </div>
       <div>
         <h3>
-          <ConfigurationPassword/>
+          <ConfigurationPassword id={id_usuario} iden={iden}/>
         </h3>
       </div>
     </>
