@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState , useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil} from "@fortawesome/free-solid-svg-icons";
-import "../css/configuration.css";
+
 const ConfigurationElement = (props) => {
   const divIden ="updateInfo"+ props.index;
   const fixedInfo ="fixedInfo"+ props.index;

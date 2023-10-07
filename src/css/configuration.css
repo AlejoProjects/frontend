@@ -55,3 +55,11 @@ p {
 #icon {
     width:15px;
 }
+#updateInfoPassword {
+    display:grid;
+    grid-template-columns: 2fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    border-style: solid;
+    padding:5px;
+
+}

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import NavMenu from "./nav";
 import persona from "../assets/persona.png";
-import ConfigurationElement from "../Pages/configurationElement";
-import ConfigurationSensible from "./configurationSensible";
+import ConfigurationSensible from "./configurationPages/configurationSensible";
+import ConfigurationElement from "./configurationPages/configurationElement";
+import ConfigurationPassword from "./configurationPages/configurationPassword";
 import "../css/configuration.css";
 
 const Configuration = () => {
@@ -84,7 +85,11 @@ const Configuration = () => {
         <h3>Información sensible</h3>
         {InformationMappingSensible}
       </div>
-      <div></div>
+      <div>
+        <h3>
+          <ConfigurationPassword/>
+        </h3>
+      </div>
     </>
   );
 };
