@@ -1,15 +1,17 @@
 import React,{ useState } from "react";
 import axios  from "axios";
+import { useNavigate } from "react-router-dom";
 import "../css/stylesheet.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire } from "@fortawesome/free-solid-svg-icons";
-import NavMenu from "./nav";
+import { useAuth } from "./AuthContext"
 
 
 
 const Home = () => {
   const [datos, setDatos] = useState({email: "",type: "",password: ""});
-
+  
+  const navigate = useNavigate();
 
 const handleInputChage = (e) => {
   let {name, value} = e.target;
@@ -17,16 +19,30 @@ const handleInputChage = (e) => {
 
   setDatos(newDatos);
 };
+const { updateUser } = useAuth();
 
 const handleSubmit = async (e)=> {
   e.preventDefault();
   if (!e.target.checkValidity()) {
     console.log("no enviar");
   }else{
-    let res = await axios.post("http://localhost:3000/api/v1/Login/", datos);
-    console.log(res.data);
+    try {
+      let res = await axios.post("http://localhost:3000/api/v1/Login/", datos);
+      const typeUserCheck = datos.type;
+      const idDinamico = typeUserCheck === "user" ? res.data.ndatos[0].id_persona : res.data.ndatos[0].id;
+
+      console.log(res.data);
+      //console.log(`id: ${idDinamico}, token: ${res.data.ndatos.token}`);
+      updateUser({ id: idDinamico, token: res.data.ndatos.token });
+      if (res.status == 200) {
+        navigate("/user")
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
+
   return (
     <>
        <div className="logo-box">
