@@ -9,9 +9,9 @@ import "../css/configuration.css";
 
 const Configuration = () => {
   const [data, setData] = useState([]);
-  const iden = 'personas';
+  const iden = 'empresas';
   let infoContainer = [],nombres = [],nombreSensible =[],infoContainerSensible = [],comprobante = [],soloNombres = "";
-  const id_usuario = 1;
+  const id_usuario = 2;
   /**La función removeSensible clasifica la información recibida del backend en información sensible y no sensible con sus respectivos nombres*/
   const removeSensible = (nombres,infoContainer) => {
     let resultadoNombres = [],resultadoInfo = [],resultadosNombresSensibles = [],resultadosInfoSensibles = [],comprobante = [],soloNombres = "";
@@ -88,7 +88,7 @@ const Configuration = () => {
       </div>
       <div>
         <h3>
-          <ConfigurationPassword id={id_usuario} iden={iden}/>
+          <ConfigurationPassword id={id_usuario} iden={iden} nombres={nombres} comprobante={comprobante}/>
         </h3>
       </div>
       <div>
