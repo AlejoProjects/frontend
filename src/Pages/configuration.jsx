@@ -4,6 +4,7 @@ import persona from "../assets/persona.png";
 import ConfigurationSensible from "./configurationPages/configurationSensible";
 import ConfigurationElement from "./configurationPages/configurationElement";
 import ConfigurationPassword from "./configurationPages/configurationPassword";
+import ConfiguracionHabilidades from "./configurationPages/configurationHabilidades";
 import "../css/configuration.css";
 
 const Configuration = () => {
@@ -89,6 +90,9 @@ const Configuration = () => {
         <h3>
           <ConfigurationPassword id={id_usuario} iden={iden}/>
         </h3>
+      </div>
+      <div>
+        <ConfiguracionHabilidades></ConfiguracionHabilidades>
       </div>
     </>
   );

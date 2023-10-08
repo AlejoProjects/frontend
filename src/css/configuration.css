@@ -69,3 +69,8 @@ p {
     padding:5px;
 
 }
+.modal{
+    position:absolute;
+    z-index:2;
+    
+}
