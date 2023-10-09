@@ -1,16 +1,20 @@
-import { useState , useEffect } from "react";
+import { useState , useEffect , useContext} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart,faX,faBolt,faRefresh,faStar,} from "@fortawesome/free-solid-svg-icons";
 import "../css/ProfileCenter.css";
 import persona from "../assets/persona.png";
 import NavMenu from "./nav";
 import InformacionUsuario from "./userInformation";
+import axios from "axios";
+import { useAuth } from "./AuthContext";
 //import { useParams } from "react-router-dom";
 const ProfileCenter = () => {
-  // const {id} = useParams();
+  
+  const {user} = useAuth();
   const [counter, setCounter] = useState(0);
   const [data,setData] = useState([]);
-  let size = 0;
+  const [size, setSize] = useState(0);
+  console.log('token fetchPersonas: '+user.token);
   /**Este efecto llama a cada persona mostrada en la carta */
   useEffect(() => {
       fetchData();
@@ -18,22 +22,36 @@ const ProfileCenter = () => {
 
 /**Este efecto llama a todos los elementos de la columna personas para poder calcular la cantidad total de personas */
   useEffect(() => {
-    fetch(`http://localhost:3000/api/v1/Personas/`)
-      .then((response) => response.json())
-      .then((jsonData) => {
-        size = jsonData.message.length;
-      })
-      .catch((error) => console.log("Ocurrió un error en la consulta"));
-  });
+    const fetchPersonas = async () =>{
+      try {
+        const response = await axios.get('http://localhost:3000/api/v1/Personas', {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
+        console.log('dasds ',response);
+        const jsonData = response.data;
+        setSize(jsonData.message.length);
+      } catch (error) {
+        console.log('Ocurrió un error en la consulta', error);
+      }
+    };
+    fetchPersonas();
+  },[user.token]);
   const fetchData = async () => {
-    fetch(`http://localhost:3000/api/v1/Personas/?&id=${counter}`)
-      .then((response) => response.json())
-      .then((jsonData) => {
-        setData(jsonData.message[counter]);
-        console.log("data "+ data.calificacion);
-      })
-      .catch((error) => console.log("Ocurrió un error en la consulta"));
-  }
+    try {
+      const response = await axios.get(`http://localhost:3000/api/v1/Personas/?&id=${counter}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const jsonData = response.data.message[counter];
+      setData(jsonData);
+      console.log('data ' + jsonData.calificacion);
+    } catch (error) {
+      console.log('Ocurrió un error en la consulta ' + error.message);
+    }
+  };
   return (
     <>
       <NavMenu></NavMenu>
