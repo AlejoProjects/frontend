@@ -6,7 +6,6 @@ import ConfigurationElement from "./configurationPages/configurationElement";
 import ConfigurationPassword from "./configurationPages/configurationPassword";
 import ConfiguracionHabilidades from "./configurationPages/configurationHabilidades";
 import "../css/configuration.css";
-
 const Configuration = () => {
   const [data, setData] = useState([]);
   const iden = 'empresas';

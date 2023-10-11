@@ -9,12 +9,12 @@ import axios from "axios";
 import { useAuth } from "./AuthContext";
 //import { useParams } from "react-router-dom";
 const ProfileCenter = () => {
-  
   const {user} = useAuth();
   const [counter, setCounter] = useState(0);
   const [data,setData] = useState([]);
   const [size, setSize] = useState(0);
-  console.log('token fetchPersonas: '+user.token);
+
+  const empresaId =  1;
   /**Este efecto llama a cada persona mostrada en la carta */
   useEffect(() => {
       fetchData();
@@ -29,7 +29,6 @@ const ProfileCenter = () => {
             Authorization: `Bearer ${user.token}`,
           },
         });
-        console.log('dasds ',response);
         const jsonData = response.data;
         setSize(jsonData.message.length);
       } catch (error) {
@@ -38,6 +37,7 @@ const ProfileCenter = () => {
     };
     fetchPersonas();
   },[user.token]);
+
   const fetchData = async () => {
     try {
       const response = await axios.get(`http://localhost:3000/api/v1/Personas/?&id=${counter}`, {
@@ -47,11 +47,13 @@ const ProfileCenter = () => {
       });
       const jsonData = response.data.message[counter];
       setData(jsonData);
-      console.log('data ' + jsonData.calificacion);
+      setId(jsonData.id_persona);
     } catch (error) {
       console.log('Ocurrió un error en la consulta ' + error.message);
     }
   };
+   
+  
   return (
     <>
       <NavMenu></NavMenu>
@@ -86,12 +88,31 @@ const ProfileCenter = () => {
           </button>
           <button
             className="elements"
-            onClick={() => {
+            onClick={async () => {
+              const valores = {
+                fk_empresa_id:empresaId,
+                fk_persona_id:data.id_persona,     
+                nombre_servicio:"match",
+	              descripción:"se ha generado la solicitud del servicio"
+          };  
+            logConsole(valores);
               //creación de servicio
+              try {
+                const response = await axios.post(`http://localhost:3000/api/v1/Servicios`, valores);
+                console.log(response);// /api/v1/persona o empresa/id
+                // Handle success, update UI if necessary
+              } 
+              catch (error) {
+                console.error(error);
+                // Handle errors
+              }
+               
+    
               setCounter(counter + 1);
               if (counter >= size - 1) {
                 setCounter(0);
               } 
+             
             }}
           >
             <FontAwesomeIcon icon={faHeart} className="icon" id="heart" />
