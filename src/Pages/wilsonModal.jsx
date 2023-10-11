@@ -36,13 +36,15 @@ const TarjetaPersona = ({ info }) => {
   return (
     <>
     <NavMenu></NavMenu>
-    <InformacionUsuario info={[data.nombre_persona,data.apellido_persona,data.locacion,data.precio_servicio,data.perfil,data.calificacion]}></InformacionUsuario>
+   
      <h1>{data.nombre_persona}</h1>
-    <div className="card">{data.nombre_persona}&nbsp;{data.apellido_persona}
+    <div className="card">
+      <h3>{data.nombre_persona}&nbsp;{data.apellido_persona}</h3>
+    <InformacionUsuario info={[data.nombre_persona,data.apellido_persona,data.locacion,data.precio_servicio,data.perfil,data.calificacion]}></InformacionUsuario>
     <img src="..." className="card-img-top" alt="..."/>
       <div className="card-body">
         <h5 className="card-title">
-        <p></p>
+        <p><InformacionUsuario info={[data.nombre_persona,data.apellido_persona]}></InformacionUsuario> </p>
           </h5>
         <p className="card-text">Otros datos: </p>
         <p> {[data.precio_servicio]} </p>
