@@ -1,11 +1,47 @@
 .elements {
     background-color: transparent;
+    border-style:none;
+    background-repeat:no-repeat;
+    width: fit-content;
+    height: fit-content;
+
+}
+.elements:active {
+    background-color: transparent;
+    border-style:none;
     border:none;
+    background-repeat:no-repeat;
+    width: fit-content;
+    height: fit-content;
+}
+
+/**ICONS **/
+/**Porfavor si van a hacer cambios avisen**/
+.icon {
+    border-radius: 90px;
+    border-style: solid;
+    padding:5px;
+}
+#x {
+    color:rgb(255, 47, 0);
+}
+#star {
+    color: cyan;
+}
+#heart {
+    color:rgb(29, 193, 97);
+}
+
+/****/
+#contenedorGeneral {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 #informacion_completa {
     color:rgba(0, 0, 0, 0);
     z-index: 1;
-    position:absolute;
+    position:relative;
     display:grid;
     grid-template-areas: 
         "item1 item1 item1" 
@@ -13,6 +49,23 @@
         "item5 item5 item5";
      
 }
+#refresh {
+    color:rgb(255, 221, 0);
+}
 #informacion_completa:hover {
     color:white;
+}
+#imagenProfile{
+    max-width:70%;
+    max-height: 40%;
+    position:relative;
+    display:inline-block
+
+}
+.row_elements{
+    z-index: 3;
+    position:relative;
+
+    max-width:70%;
+   
 }
