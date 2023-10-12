@@ -3,26 +3,35 @@ import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavMenu from "./nav";
 import InformacionUsuario from './userInformation';
-
+import { useAuth } from "./AuthContext";
+import axios from "axios";
 
 const TarjetaPersona = ({ info }) => {
   const [counter, setCounter] = useState(0);
+  const [size, setSize] = useState(0);
   const [data,setData] = useState([]);
+  const {user} = useAuth();
   let size = 0;
   /**Este efecto llama a cada persona mostrada en la carta */
-  useEffect(() => {
-      fetchData();
-  }, [counter]);
+ 
 
 /**Este efecto llama a todos los elementos de la columna personas para poder calcular la cantidad total de personas */
   useEffect(() => {
-    fetch(`http://localhost:3000/api/v1/Personas/`)
-      .then((response) => response.json())
-      .then((jsonData) => {
-        size = jsonData.message.length;
-      })
-      .catch((error) => console.log("Ocurrió un error en la consulta"));
-  });
+    const fetchPersonas = async () =>{
+      try {
+        const response = await axios.get('http://localhost:3000/api/v1/Personas', {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
+        const jsonData = response.data;
+        setSize(jsonData.message.length);
+      } catch (error) {
+        console.log('Ocurrió un error en la consulta', error);
+      }
+    };
+    fetchPersonas();
+  },[user.token]);
   const fetchData = async () => {
     fetch(`http://localhost:3000/api/v1/Personas/?&id=${counter}`)
       .then((response) => response.json())

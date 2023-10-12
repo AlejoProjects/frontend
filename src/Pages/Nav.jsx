@@ -24,6 +24,11 @@ const NavMenu = () => {
             <FontAwesomeIcon icon={faUser} /> 
           </Link>
         </li>
+        <li>
+          <Link to={"/wilsonModal"}>
+            <FontAwesomeIcon icon={faUser} /> 
+          </Link>
+        </li>
       </ul>
     </nav>
   );
