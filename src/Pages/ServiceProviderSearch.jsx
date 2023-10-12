@@ -1,48 +1,58 @@
-import React, { Component } from 'react';
-import InformacionUsuario from "./userInformation";
+import React, { useState, useEffect } from "react";
+import InformacionUsuario from "./UserInformation";
 
-//data of service providers from the server
-class ServiceProviderSearch extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchQuery: '',
-      results: [],
-    };
-  }
+const ServiceProviderSearch = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  handleSearchChange = (e) => {
-    const searchQuery = e.target.value;
-    this.setState({ searchQuery });
+  useEffect(() => {
+    // Obtención de datos de la API de base de datos NoSQL cuando se monta el componente
+    fetch("http://localhost:3000/api/v1/HabilidadesPersonas/")
+      .then((response) => response.json())
+      .then((data) => {
+        setSearchResults(data); // Ls resupesta de la API es un array de los proveedores de servicios
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
+  }, []);
 
-    // Perform a simple client-side search
-    const filteredResults = InformacionUsuario.filter((provider) =>
-      provider.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+  const handleSearch = () => {
+    // Filter service providers based on the search query
+    const results = searchResults.filter((provider) => {
+      const providerInfo = `${provider.name} ${provider.apellido} ${provider.ubicación} ${provider.precio} ${provider.perfil} ${provider.calificación}`;
+      return providerInfo.toLowerCase().includes(searchQuery.toLowerCase());
+    });
 
-    this.setState({ results: filteredResults });
+    setSearchResults(results);
   };
 
-  render() {
-    return (
-      <div>
-        <h1>Service Provider Search</h1>
-        <input
-          type="text"
-          placeholder="Search for service providers"
-          value={this.state.searchQuery}
-          onChange={this.handleSearchChange}
-        />
-        <ul>
-          {this.state.results.map((provider) => (
-            <li key={provider.id}>
-              {provider.name} - {provider.service} - {provider.contact}
-            </li>
+  return (
+    <div>
+      <h1>Service Provider Search</h1>
+      <input
+        type="text"
+        placeholder="Search for a service provider"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      <button onClick={handleSearch}>Search</button>
+
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div>
+          {searchResults.map((provider, index) => (
+            <InformacionUsuario key={index} info={Object.values(provider)} />
           ))}
-        </ul>
-      </div>
-    );
-  }
-}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default ServiceProviderSearch;
+

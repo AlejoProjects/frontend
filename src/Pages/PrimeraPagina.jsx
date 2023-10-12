@@ -11,6 +11,9 @@ return(
         <Link to={"/home/usuario"}>
             <h1>Usuario</h1>
         </Link>
+        <Link to={"/ServiceProviderSearch"}>
+            <h1>ServicesProviders</h1>
+        </Link>
         </div>
     
     </>
