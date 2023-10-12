@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import NavMenu from "./nav";
 import persona from "../assets/persona.png";
-import ConfigurationElement from "../Pages/configurationElement";
-import ConfigurationSensible from "./configurationSensible";
+import ConfigurationSensible from "./configurationPages/configurationSensible";
+import ConfigurationElement from "./configurationPages/configurationElement";
+import ConfigurationPassword from "./configurationPages/configurationPassword";
+import ConfiguracionHabilidades from "./configurationPages/configurationHabilidades";
 import "../css/configuration.css";
-
 const Configuration = () => {
   const [data, setData] = useState([]);
-  const iden = 'personas';
+  const iden = 'empresas';
   let infoContainer = [],nombres = [],nombreSensible =[],infoContainerSensible = [],comprobante = [],soloNombres = "";
-  const id_usuario = 1;
+  const id_usuario = 2;
   /**La función removeSensible clasifica la información recibida del backend en información sensible y no sensible con sus respectivos nombres*/
   const removeSensible = (nombres,infoContainer) => {
     let resultadoNombres = [],resultadoInfo = [],resultadosNombresSensibles = [],resultadosInfoSensibles = [],comprobante = [],soloNombres = "";
@@ -52,7 +53,7 @@ const Configuration = () => {
   });
   const resultado  = removeSensible(nombres,infoContainer);
   nombres = resultado[0],infoContainer = resultado[1],nombreSensible = resultado[2],infoContainerSensible = resultado[3],comprobante = resultado[4],soloNombres = resultado[5];
-  /**La función information mapping crea las opciones a modificar en tags de react segpun la info contenida en el backend */
+  /**La función information mapping crea las opciones a modificar en tags de react según la info contenida en el backend */
   const InformationMapping =infoContainer.map((item,index) => (
    
      <ConfigurationElement key={index}  index={index} ident={iden} id={infoContainerSensible[0]} info={infoContainer} nombres={nombres} comprobante={comprobante}/>
@@ -84,7 +85,14 @@ const Configuration = () => {
         <h3>Información sensible</h3>
         {InformationMappingSensible}
       </div>
-      <div></div>
+      <div>
+        <h3>
+          <ConfigurationPassword id={id_usuario} iden={iden} nombres={nombres} comprobante={comprobante}/>
+        </h3>
+      </div>
+      <div>
+        <ConfiguracionHabilidades></ConfiguracionHabilidades>
+      </div>
     </>
   );
 };
