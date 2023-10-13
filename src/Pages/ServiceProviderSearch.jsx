@@ -1,78 +1,67 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faX, faBolt, faRefresh, faStar } from "@fortawesome/free-solid-svg-icons";
-import "../css/ProfileCenter.css";
-import NavMenu from "./nav";
-import InformacionUsuario from "./userInformation";
+import DetalleServices from "./DetalleServices";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ServiceProviderSearch = () => {
-  const [services, setServices] = useState(0);
-  const [data, setData] = useState([]);
- const [filtroNombre, setFiltroNombre] = useState('');
- const[ServicioSeleccionado, setServicioSeleccionado] = useState('');
+  const [services, setServices] = useState([]);
+  const [limite, setLimite] = useState(1);
+  const [filtroNombre, setFiltroNombre] = useState('');
+  const [ServicioSeleccionado, setServicioSeleccionado] = useState('');
 
-   useEffect(() => {
+  useEffect(() => {
     fetch(`http://localhost:3000/api/v1/Servicios/?&id=${limite}`)
-    .then(response => response.json())
-    .then(jsonData => {
-        console.log(jsonData);
-        setServices(jsonData.results)
-    })
-    .catch(error => {
+      .then(response => response.json())
+      .then(jsonData => {
+        console.log(jsonData.message);
+        setServices(jsonData.message)
+      })
+      .catch(error => {
         alert('No se pudo establecer conexion a la API')
-    })
-}, [limite]);
+      })
+  }, [limite]);
 
-const capturarFiltroNombre = (event) => {
+  const capturarLimite = (event) => {
+    setLimite(event.target.value);
+  }
+  const capturarFiltroNombre = (event) => {
     setFiltroNombre(event.target.value);
-}
-const seleccionarServicio = (idServicio) => {
-  setServicioSeleccionado(idServicio)
-}
+  }
+  const seleccionarServicio = (idServicio) => {
+    setServicioSeleccionado(idServicio)
+  }
 
   return (
-    <> 
-     <br />
-            <label>Búsqueda por nombre: </label>
-            <input
-                value={filtroNombre}
-                onChange={capturarFiltroNombre}
-            />
-      <NavMenu></NavMenu>
-        <div>
-        <InformacionUsuario info={[data.nombre_persona, data.apellido_persona, data.locacion, data.precio_servicio, data.perfil, data.calificacion]}></InformacionUsuario>
-        <h3>
-          {data.nombre_persona}&nbsp;{data.apellido_persona}
-        </h3>
-
-        <div className="row_elements profile_icons">
-          <button className="elements" onClick={goToPreviousProfile}>
-            <FontAwesomeIcon icon={faRefresh} className="icon" id="refresh" />
-          </button>
-          <button className="elements" onClick={goToNextProfile}>
-            <FontAwesomeIcon icon={faX} className="icon" id="x" />
-          </button>
-          <button className="elements">
-            <FontAwesomeIcon icon={faStar} className="icon" id="star" />
-          </button>
-          <button className="elements" onClick={goToNextProfile}>
-            <FontAwesomeIcon icon={faHeart} className="icon" id="heart" />
-          </button>
-          <button className="elements">
-            <FontAwesomeIcon icon={faBolt} className="icon" id="ray" />
-          </button>
-        </div>
-{
+    <>
+      <label>Límite de Servicios: </label>
+      <input
+        value={limite}
+        onChange={capturarLimite}
+      />
+      <br />
+      <label>Búsqueda por nombre: </label>
+      <input
+        value={filtroNombre}
+        onChange={capturarFiltroNombre}
+      />
+      {
+        //console.log(services);
         services.map((servicio, index) => {
-                    return (
-                        <button key={index}
-                        onClick={() => seleccionarServicio(servicio.url)}
-                        >{servicio.fk_habilidad_id}</button>
-                    )
-                })
-              }
-              <DetalleServices urlServices={ServicioSeleccionado}/>
-      </div>
+          return (
+            <button key={index}
+              onClick={() => seleccionarServicio(servicio.id_servicio)}
+            >{servicio.descripción}
+              <Link
+                to={`DetalleServices/${servicio.id_servicio}`}
+                className='card-title'
+              >
+                {pokemon.name}
+              </Link>
+            </button>
+          )
+        })
+      }
+      <DetalleServices id={ServicioSeleccionado} />
     </>
   );
 };
