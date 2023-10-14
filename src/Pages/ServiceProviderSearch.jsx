@@ -4,64 +4,53 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const ServiceProviderSearch = () => {
-  const [services, setServices] = useState([]);
-  const [limite, setLimite] = useState(1);
+  const [services, setServices] = useState([]); // Initialize as an empty array
+  const [id, setId] = useState(1);
   const [filtroNombre, setFiltroNombre] = useState('');
-  const [ServicioSeleccionado, setServicioSeleccionado] = useState('');
+  const [servicioSeleccionado, setServicioSeleccionado] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/v1/Servicios/?&id=${limite}`)
+    fetch(`http://localhost:3000/api/v1/HabilidadesPersonas/${id}`)
       .then(response => response.json())
       .then(jsonData => {
-        console.log(jsonData.message);
-        setServices(jsonData.message)
+        console.log(jsonData);
+        // Assuming jsonData.message[0].descripción is an array of services
+        setServices(jsonData.message[0].descripción || []); // Initialize as an empty array if not present
       })
-      .catch(error => {
-        alert('No se pudo establecer conexion a la API')
-      })
-  }, [limite]);
+      .catch(error => console.error('Ocurrió un error en la consola', error));
+  }, [id]);
 
   const capturarLimite = (event) => {
-    setLimite(event.target.value);
+    setId(event.target.value);
   }
+
   const capturarFiltroNombre = (event) => {
     setFiltroNombre(event.target.value);
   }
+
   const seleccionarServicio = (idServicio) => {
-    setServicioSeleccionado(idServicio)
+    setServicioSeleccionado(idServicio);
   }
 
   return (
     <>
-      <label>Límite de Servicios: </label>
-      <input
-        value={limite}
-        onChange={capturarLimite}
-      />
       <br />
-      <label>Búsqueda por nombre: </label>
+      <label>Búsqueda por nombre de servicio: </label>
       <input
         value={filtroNombre}
         onChange={capturarFiltroNombre}
       />
       {
-        //console.log(services);
-        services.map((servicio, index) => {
+        services.map((servicioPersona, index) => {
           return (
-            <button key={index}
-              onClick={() => seleccionarServicio(servicio.id_servicio)}
-            >{servicio.descripción}
-              <Link
-                to={`DetalleServices/${servicio.id_servicio}`}
-                className='card-title'
-              >
-                {pokemon.name}
+            <div key={index}>
+              <Link to={`/DetalleServices/${servicioPersona.id_habilidad}`} className='card-title'>
+                {servicioPersona.descripción}
               </Link>
-            </button>
+            </div>
           )
         })
       }
-      <DetalleServices id={ServicioSeleccionado} />
     </>
   );
 };

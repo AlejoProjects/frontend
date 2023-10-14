@@ -9,21 +9,21 @@ const DetalleServices = ({ }) => {
     const [descripción, setDescripcion] = useState('');
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/v1/Servicios/${id}`)
+        fetch(`http://localhost:3000/api/v1/HabilidadesPersonas/${id}`)
             .then(response => response.json())
             .then(jsonData => {
                 console.log(jsonData);
-                setNombrePersona(jsonData.nombre_persona);
-                setDescripcion(jsonData.descripción);
+                setNombrePersona(jsonData.message[0].nombre_persona);
+                setDescripcion(jsonData.message[0].descripción);
                
             })
             .catch(error => console.log('Ocurrió un error en la consola'));
-    })
+    }, [])
 
     return (
         <>
             <h2>{nombre_persona}</h2>
-            <p>Descipción: {descripción} cm</p>
+            <p>Descipción Servicios: {descripción}. </p>
         </>
     )
 
