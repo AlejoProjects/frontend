@@ -7,7 +7,10 @@ import NavMenu from "./nav";
 import InformacionUsuario from "./userInformation";
 import axios from "axios";
 import { useAuth } from "./AuthContext";
+import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 
 //import { useParams } from "react-router-dom";
@@ -18,6 +21,7 @@ const ProfileCenter = () => {
   const [size, setSize] = useState(0);
   const [servicios, setServicios] = useState([]);
   const empresaId = 1;
+  const [show, setShow] = useState(false);
   /**Este efecto llama a cada persona mostrada en la carta */
   useEffect(() => {
     fetchData();
@@ -92,30 +96,8 @@ const ProfileCenter = () => {
         <h3>
           {data.nombre_persona}&nbsp;{data.apellido_persona}
         </h3>
-        <button className="elements"  data-bs-toggle="modal" data-bs-target="#myModal" 
-        onClick={() => {
-        <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">{data.nombre_persona}&nbsp;{data.apellido_persona}</h5>
-                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div className="modal-body">
-                <h4>{data.nombre_persona}&nbsp;{data.apellido_persona}</h4>
-                <br />
-                <p>`el usuario {data.nombre_persona}&nbsp;{data.apellido_persona} ofrece sus servicios en {data.precio_servicio} precio
-                  y cuenta con {data.calificacion} hasta la fecha.
-                  `</p>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        }}>
-          
+        <button className="elements"
+        onClick={() => setShow(true)}>
           <img src={persona} id="imagenProfile"></img>
         </button>
         <div className="row_elements profile_icons">
@@ -173,7 +155,26 @@ const ProfileCenter = () => {
           </button>
         </div>
       </div>
-
+      <Modal
+        show={show}
+        onHide={() => setShow(false)}
+        dialogClassName="modal-90w"
+        aria-labelledby="example-custom-modal-styling-title"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-custom-modal-styling-title">
+          {data.nombre_persona}&nbsp;{data.apellido_persona}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+          El usuario {data.nombre_persona}&nbsp;{data.apellido_persona} ofrece sus servicios en {data.precio_servicio} precio
+            y cuenta con {data.calificacion} hasta la fecha.
+            <br />
+            Si deseas contactar con el no dudes en dar un cocoro para asignar un nuevo servicio
+          </p>
+        </Modal.Body>
+      </Modal>
     </>
   );
 };
