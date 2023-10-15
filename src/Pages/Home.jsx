@@ -55,23 +55,23 @@ const handleSubmit = async (e)=> {
         }}
       />
 
-      <h2>Iniciar sesión en Tinder de habilidades</h2>
+      <h2 className="texto">Iniciar sesión en Tinder de habilidades</h2>
       
       <hr></hr>
       <form onSubmit={handleSubmit} noValidate={true} autoComplete="off">
 
         <select name="type" id="typeUser" required value={datos.type} onChange={handleInputChage}>
-          <option value="" disabled >Seleccione una opción</option>
-          <option value="empresa">Empresas</option>
-          <option value="user">Personas</option>
+          <option value="" disabled className="texto">Seleccione una opción</option>
+          <option value="empresa"  className="texto">Empresas</option>
+          <option value="user"  className="texto">Personas</option>
         </select>
 
-        <input id="email" type="text" onChange={handleInputChage} value={datos.email} placeholder="Correo electrónico" name = "email" required/>
+        <input id="email" type="text" onChange={handleInputChage} value={datos.email} placeholder="Correo electrónico" name = "email" required className="texto"/>
 
-        <input id="password" type="password" onChange={handleInputChage} value={datos.password} placeholder="Contraseña" name= "password" required />
+        <input id="password" type="password" onChange={handleInputChage} value={datos.password} placeholder="Contraseña" name= "password" required  className="texto"/>
         <button>Ingresar</button>
       </form>
-      <button>Forget Password</button>
+      <button  className="texto">Forget Password</button>
       <p>
         Don't Have an account<a>Sign up</a>
       </p>

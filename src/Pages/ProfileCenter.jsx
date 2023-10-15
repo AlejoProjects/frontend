@@ -54,6 +54,7 @@ const ProfileCenter = () => {
       });
       const jsonData = response.data.message[counter];
       setData(jsonData);
+      setSize(jsonData.length);
     } catch (error) {
       console.log('Ocurrió un error en la consulta ' + error.message);
     }
@@ -74,22 +75,10 @@ const ProfileCenter = () => {
     }
   };
   /**Esta función valida si ya existe un servicio creado dentro de la base de datos. Si esta creado entonces ignora la muestra de los datos de esa persona. */
-  const validadorServicios = async () => {
-    const sizeServicios = servicios.length;
-    for (let i = 0; i < sizeServicios; i += 1) {
-      if (parseInt(servicios[i].fk_empresa_id) == empresaId) {
-        if (parseInt(servicios[i].fk_persona_id) == data.id_persona) {
-          setCounter(counter + 1);
-        }
-      }
-    };
-
-  };
-  
-
+ 
   return (
     <>
-
+  
       <div id="contenedorGeneral">
         <NavMenu></NavMenu>
         <InformacionUsuario info={[data.nombre_persona, data.apellido_persona, data.locacion, data.precio_servicio, data.perfil, data.calificacion]}></InformacionUsuario>
@@ -113,11 +102,11 @@ const ProfileCenter = () => {
             <FontAwesomeIcon icon={faRefresh} className="icon" id="refresh" />
           </button>
           <button className="elements" onClick={() => {
-            setCounter(counter + 1);
-            if (counter >= size - 1) {
-              setCounter(0);
-            }
-          }}>
+              setCounter(counter + 1);
+              if (counter >= size - 1) {
+                setCounter(0);
+              } 
+            }}>
             <FontAwesomeIcon icon={faX} className="icon" id="x" />
           </button>
           <button className="elements">
