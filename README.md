@@ -1,6 +1,6 @@
 <h1>Tinder para habilidades</h1>
 
-Este es el repositorio de la parte frontend de TinDe para Habilidades, una aplicación que combina la experiencia de Tinder con la búsqueda y contratación de talento para empresas. La aplicación está desarrollada en React y utiliza Vite para la construcción del proyecto.
+Este es el repositorio de la parte frontend de tinder para Habilidades, una aplicación que combina la experiencia de Tinder con la búsqueda y contratación de talento para empresas. La aplicación está desarrollada en React y utiliza Vite para la construcción del proyecto.
 
 ## Objetivo
 
