@@ -24,6 +24,7 @@ const NavMenu = () => {
             <FontAwesomeIcon icon={faUser} /> 
           </Link>
         </li>
+       
       </ul>
     </nav>
   );
