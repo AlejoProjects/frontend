@@ -4,7 +4,6 @@ import { faHeart, faX, faBolt, faRefresh, faStar, } from "@fortawesome/free-soli
 import "../css/ProfileCenter.css";
 import persona from "../assets/persona.jpg";
 import NavMenu from "./nav";
-import InformacionUsuario from "./userInformation";
 import axios from "axios";
 import { useAuth } from "./AuthContext";
 import Modal from 'react-bootstrap/Modal';
@@ -15,13 +14,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 //import { useParams } from "react-router-dom";
 const ProfileCenter = () => {
+  const url = 'http://localhost:3000/api/v1';
   const { user } = useAuth();
   const [counter, setCounter] = useState(0);
   const [data, setData] = useState([]);
   const [size, setSize] = useState(0);
-  const [servicios, setServicios] = useState([]);
-  const empresaId = 1;
   const [show, setShow] = useState(false);
+  const empresaId =  1;
   /**Este efecto llama a cada persona mostrada en la carta */
   useEffect(() => {
     fetchData();
@@ -31,7 +30,7 @@ const ProfileCenter = () => {
   useEffect(() => {
     const fetchPersonas = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/v1/Personas', {
+        const response = await axios.get(url+'/Personas', {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
@@ -47,14 +46,17 @@ const ProfileCenter = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/v1/Personas/?&id=${counter}`, {
+      if(counter == size - 1){
+        setCounter(0);
+      }
+      const response = await axios.get(url+`/Personas/?&id=${counter}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       });
       const jsonData = response.data.message[counter];
       setData(jsonData);
-      setSize(jsonData.length);
+
     } catch (error) {
       console.log('Ocurrió un error en la consulta ' + error.message);
     }
@@ -63,7 +65,7 @@ const ProfileCenter = () => {
   const fetchServices = async () => {
     /**Se hace el llamado de los servicios para consultar si ya existen o no. */
     try {
-      const response = await axios.get(`http://localhost:3000/api/v1/Servicios`, {
+      const response = await axios.get(url+`/Servicios`, {
         /**   headers: {
             Authorization: `Bearer ${user.token}`,
           },*/
@@ -81,7 +83,6 @@ const ProfileCenter = () => {
   
       <div id="contenedorGeneral">
         <NavMenu></NavMenu>
-        <InformacionUsuario info={[data.nombre_persona, data.apellido_persona, data.locacion, data.precio_servicio, data.perfil, data.calificacion]}></InformacionUsuario>
         <h3>
           {data.nombre_persona}&nbsp;{data.apellido_persona}
         </h3>
@@ -95,17 +96,23 @@ const ProfileCenter = () => {
             onClick={() => {
               setCounter(counter - 1);
               if (counter <= 0) {
-                setCounter(size - 1);
+                setCounter(size - 2);
               }
             }}
           >
             <FontAwesomeIcon icon={faRefresh} className="icon" id="refresh" />
           </button>
           <button className="elements" onClick={() => {
-              setCounter(counter + 1);
-              if (counter >= size - 1) {
+              console.log('antes '+counter);
+               if (counter >= size) {
                 setCounter(0);
               } 
+              else{
+                setCounter(counter + 1);
+              }
+              console.log('despues '+counter);
+             
+           
             }}>
             <FontAwesomeIcon icon={faX} className="icon" id="x" />
           </button>
@@ -123,7 +130,7 @@ const ProfileCenter = () => {
               };
               //creación de servicio
               try {
-                const response = await axios.post(`http://localhost:3000/api/v1/Servicios`, valores);
+                const response = await axios.post(url+`/Servicios`, valores);
                 console.log(response);// /api/v1/persona o empresa/id
                 // Handle success, update UI if necessary
               }
@@ -131,12 +138,14 @@ const ProfileCenter = () => {
                 console.error(error);
                 // Handle errors
               }
-
-
-              setCounter(counter + 1);
-              if (counter >= size - 1) {
+            
+              if (counter >= size) {
                 setCounter(0);
               }
+              else{
+              setCounter(counter + 1);
+              }
+             
 
             }}
           >

@@ -10,7 +10,7 @@ import { useAuth } from "./AuthContext"
 
 const Home = () => {
   const [datos, setDatos] = useState({email: "",type: "",password: ""});
-  
+  const url = 'http://localhost:3000/api/v1';
   const navigate = useNavigate();
 
 const handleInputChage = (e) => {
@@ -27,7 +27,7 @@ const handleSubmit = async (e)=> {
     console.log("no enviar");
   }else{
     try {
-      let res = await axios.post("http://localhost:3000/api/v1/Login/", datos);
+      let res = await axios.post(url+"/Login/", datos);
       const typeUserCheck = datos.type;
       const idDinamico = typeUserCheck === "user" ? res.data.ndatos[0].id_persona : res.data.ndatos[0].id;
 
