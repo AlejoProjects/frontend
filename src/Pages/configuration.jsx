@@ -6,6 +6,7 @@ import ConfigurationElement from "./configurationPages/configurationElement";
 import ConfigurationPassword from "./configurationPages/configurationPassword";
 import ConfiguracionHabilidades from "./configurationPages/configurationHabilidades";
 import "../css/configuration.css";
+
 const Configuration = () => {
   const [data, setData] = useState([]);
   const iden = 'empresas';
@@ -36,14 +37,14 @@ const Configuration = () => {
 
   };
    /**Esta función es temporal, se borrara cuando sea implementada la validación del login*/
-  useEffect(() => {
-    fetch(`http://localhost:3000/api/v1/`+iden+"/"+id_usuario)
-    .then((response) => response.json())
-    .then((jsonData) => {
-      setData(jsonData.message[0]);
-    })
-    .catch((error) => console.log("Ocurrió un error en la consulta"));
-  });
+  // useEffect(() => {
+  //   fetch(`http://localhost:3000/api/v1/`+iden+"/"+id_usuario)
+  //   .then((response) => response.json())
+  //   .then((jsonData) => {
+  //     setData(jsonData.message[0]);
+  //   })
+  //   .catch((error) => console.log("Ocurrió un error en la consulta"));
+  // });
 
   nombres = Object.keys(data);
   nombres.forEach(async (key,index) => {
