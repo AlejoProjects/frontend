@@ -47,6 +47,7 @@ const ProfileCenter = () => {
       });
       const jsonData = response.data.message[counter];
       setData(jsonData);
+      //console.log('data ' + jsonData.calificacion);
     } catch (error) {
       console.log('Ocurrió un error en la consulta ' + error.message);
     }

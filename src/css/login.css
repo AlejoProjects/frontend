@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+  }
+   
+  body {
+    background-image: linear-gradient(180deg, #ffffa1 0, #f5ffa0 6.25%, #e4ffa0 12.5%, #d2ffa1 18.75%, #bdffa3 25%, #a7fda6 31.25%, #8cfaaa 37.5%, #6cf7af 43.75%, #3cf2b5 50%, #00edbc 56.25%, #00e8c6 62.5%, #00e4d0 68.75%, #00dfdc 75%, #00dbe9 81.25%, #00d7f5 87.5%, #00d3ff 93.75%, #00d0ff 100%);
+  }
+   
+  .logo-box {
+    background: #fff;
+    padding: 30px 120px;
+    width: 550px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-radius: 10px;
+  }
+   
+  .logo {
+    width: 30px;
+    margin-bottom: 20px;
+  }
+  .logo-box h2 {
+    margin-bottom: 20px;
+  }
+   
+  .logo-box button img {
+    width: 18px;
+    margin-right: 10px;
+  }
+   
+  .logo-box button {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0px;
+    border-radius: 30px;
+    background: transparent;
+    border: 1px solid #999;
+    font-weight: 500;
+    cursor: pointer;
+  }
+   
+  .logo-box hr {
+    border: 0;
+    height: 1px;
+    background: #c2c2c2;
+    margin: 5px;
+  }
+   
+  .logo-box span {
+    display: block;
+    width: 40px;
+    margin: auto;
+    background: #fff;
+    font-size: 14px;
+    margin-top: -16px;
+  }
+  .logo-box input{
+    width: 100%;
+    background: transparent;
+    border: 1px solid #999;
+    outline: 0;
+    padding: 15px 10px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+  }
+  .logo-box select {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #999;
+    outline: 0;
+    padding: 15px 10px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+  }
+  ::placeholder {
+    font-weight: 500;
+    color: #333;
+  }
+   
+  .logo-box form button {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, #fd267a 60%,  #ff6036);
+    color: #fff;
+    border: 0;
+    margin-bottom: 15px;
+    /* transition: background-color 0.3s ease */
+  }
+
+  .logo-box form button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -0%;
+    width: 0%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); 
+    /* transition: width 0.3s ease; */
+  }
+  .logo-box form button:hover::before{
+    width: 100%;
+  }
+   
+  .logo-box p {
+    /* text-align: left; */
+    font-size: 14px;
+    color: #555;
+    margin: 40px 0 50px;
+  }
+   
+  .login-box p a {
+    text-decoration: none;
+    color: #359cf0;
+    margin-left: 100px;
+  }

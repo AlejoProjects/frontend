@@ -3,6 +3,8 @@ import Home from "../Pages/Home";
 import ProfileCenter from "../Pages/ProfileCenter";
 import ServiceCenter from "../Pages/ServiceCenter";
 import Configuration from "../Pages/configuration";
+
+
 const RouterIndex = () => {
   return (
     <Routes>

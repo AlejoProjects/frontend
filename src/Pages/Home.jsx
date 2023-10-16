@@ -1,7 +1,7 @@
 import React,{ useState } from "react";
 import axios  from "axios";
 import { useNavigate } from "react-router-dom";
-import "../css/stylesheet.css";
+import "../css/login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "./AuthContext"
@@ -33,8 +33,10 @@ const handleSubmit = async (e)=> {
 
       console.log(res.data);
       //console.log(`id: ${idDinamico}, token: ${res.data.ndatos.token}`);
-      updateUser({ id: idDinamico, token: res.data.ndatos.token });
-      if (res.status == 200) {
+      updateUser({ id: idDinamico, token: res.data.ndatos.token, type: typeUserCheck });
+      if (res.status == 200 && typeUserCheck === "user") {
+        navigate("/services")
+      } else if (res.status == 200 && typeUserCheck ==="empresa") {
         navigate("/user")
       }
     } catch (error) {
@@ -45,7 +47,10 @@ const handleSubmit = async (e)=> {
 
   return (
     <>
-       <div className="logo-box">
+      <div className="body-login">
+      <div className="logo-box">
+          
+        
        <FontAwesomeIcon
         icon={faFire}
         style={{
@@ -75,6 +80,7 @@ const handleSubmit = async (e)=> {
       <p>
         Don't Have an account<a>Sign up</a>
       </p>
+    </div>
     </div>
     </>
   );
