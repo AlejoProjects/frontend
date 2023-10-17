@@ -73,7 +73,7 @@ const handleSubmit = async (e)=> {
       </form>
       <button>Forget Password</button>
       <p>
-        Don't Have an account<a>Sign up</a>
+        Don't Have an account<a>   <button className="texto">Register New Acount</button></a>
       </p>
     </div>
     </>
