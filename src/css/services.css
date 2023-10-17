@@ -7,7 +7,10 @@
     border-bottom:0;
 }
 .box {
-  
+  display:grid;
+  grid-template-rows:2fr 1fr;
+  justify-content:left;
+
 }
 .box_size {
     border-top: 0.01;
@@ -17,4 +20,11 @@
 }
 .message_snipet {
     font-size: small;
+}
+.text_container {
+    display: flex;
+    flex-direction: row;
+}
+.circularPicture {
+    border-radius: 90px;
 }
