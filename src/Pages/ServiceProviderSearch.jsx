@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const ServiceProviderSearch = () => {
-  const [services, setServices] = useState([]); // Initialize as an empty array
+  const [services, setServices] = useState([]); // State to store the list of services
   const [id, setId] = useState(1);
   const [filtroNombre, setFiltroNombre] = useState('');
   const [servicioSeleccionado, setServicioSeleccionado] = useState('');
@@ -15,10 +15,10 @@ const ServiceProviderSearch = () => {
       .then(jsonData => {
         console.log(jsonData);
         // Assuming jsonData.message[0].descripción is an array of services
-        setServices(jsonData.message[0].descripción || []); // Initialize as an empty array if not present
+        setServices(jsonData.message[0].descripción);
       })
       .catch(error => console.error('Ocurrió un error en la consola', error));
-  }, [id]);
+  }, [id]); // Include 'id' as a dependency
 
   const capturarLimite = (event) => {
     setId(event.target.value);
@@ -35,7 +35,7 @@ const ServiceProviderSearch = () => {
   return (
     <>
       <br />
-      <label>Búsqueda por nombre de servicio: </label>
+      <label>Búsqueda de servicio: </label>
       <input
         value={filtroNombre}
         onChange={capturarFiltroNombre}
@@ -43,7 +43,7 @@ const ServiceProviderSearch = () => {
       {
         services.map((servicioPersona, index) => {
           return (
-            <div key={index}>
+            <div key={index}> {/* Use a <div> instead of <button> */}
               <Link to={`/DetalleServices/${servicioPersona.id_habilidad}`} className='card-title'>
                 {servicioPersona.descripción}
               </Link>
