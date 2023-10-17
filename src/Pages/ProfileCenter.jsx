@@ -28,7 +28,7 @@ const ProfileCenter = () => {
   const table = '/Personas';
   const url = 'http://localhost:3000/api/v1';
   const { user } = useAuth();
-  const [counter, setCounter] = useState(0);
+  const [contador, setContador] = useState(0);
   const [data, setData] = useState([]);
   const [size, setSize] = useState(0);
   const [show, setShow] = useState(false);
@@ -36,7 +36,7 @@ const ProfileCenter = () => {
   /**Este efecto llama a cada persona mostrada en la carta */
   useEffect(() => {
     fetchData();
-  }, [counter]);
+  }, [contador]);
 
   /**Este efecto llama a todos los elementos de la columna personas para poder calcular la cantidad total de personas */
   useEffect(() => {
@@ -51,7 +51,7 @@ const ProfileCenter = () => {
         },
       });
       const jsonData = response.data;
-      setSize(jsonData.message.length);
+      setSize((jsonData.message.length)-1);
     } catch (error) {
       console.log('Ocurrió un error en la consulta', error);
     }
@@ -59,22 +59,42 @@ const ProfileCenter = () => {
   /**La función fetchData selecciona la persona actual en el carrousel. */
   const fetchData = async () => {
     try {
-      if(counter == size - 1){
-        setCounter(0);
-      }
-      const response = await axios.get(url+table+`/?&id=${counter}`, {
+     
+      const response = await axios.get(url+table, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       });
-      const jsonData = response.data.message[counter];
+      console.log("el contador es "+contador);
+      const jsonData = response.data.message[contador];
       setData(jsonData);
 
     } catch (error) {
       console.log('Ocurrió un error en la consulta ' + error.message);
     }
   };
-
+  /**La función resetear contador pone los limites superiores e inferiores del carrousel para saber en donde volver a iniciar la muestra de individuos. */
+  const resetearContador = (value) => {
+    switch(value){
+      case 1: 
+      if(contador > (size) || contador === size){
+        setContador(0);
+      }
+      else {
+        setContador(contador + value);
+      }
+      break;
+      case -1:
+        if(contador === 0){
+          setContador(size);
+        }
+        else {
+          setContador(contador + value);
+        }
+      break;
+    }
+   
+  };
   return (
     <>
   
@@ -91,27 +111,13 @@ const ProfileCenter = () => {
           <button
             className="elements"
             onClick={() => {
-              setCounter(counter - 1);
-              if (counter <= 0) {
-                setCounter(size - 2);
-              }
+            resetearContador(-1);
             }}
           >
             <FontAwesomeIcon icon={faRefresh} className="icon" id="refresh" />
           </button>
           <button className="elements" onClick={() => {
-              console.log('antes '+counter);
-              //Si el counter es mayor a la cantidad de personas lo devuelve a la primera persona.
-               if (counter >= size) {
-                setCounter(0);
-              } 
-              //Si aún no ha mostrado la totalidad de las personas entonces va aumentando 1 a 1 el id del sujeto a mostrar en el carrousel
-              else{
-                setCounter(counter + 1);
-              }
-              console.log('despues '+counter);
-             
-           
+                resetearContador(1);    
             }}>
             <FontAwesomeIcon icon={faX} className="icon" id="x" />
           </button>
@@ -137,15 +143,7 @@ const ProfileCenter = () => {
                 console.error(error);
                 // Handle errors
               }
-            
-              if (counter >= size) {
-                setCounter(0);
-              }
-              else{
-              setCounter(counter + 1);
-              }
-             
-
+              resetearContador(1);            
             }}
           >
             <FontAwesomeIcon icon={faHeart} className="icon" id="heart" />
