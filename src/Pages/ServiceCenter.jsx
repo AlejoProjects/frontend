@@ -7,7 +7,7 @@ const ServiceCenter = () => {
   const url = 'http://localhost:3000/api/v1';
   useEffect(() => {
     fetchServices();
-  }, [counter]);
+  });
 
   const fetchServices = async () => {
     try {
