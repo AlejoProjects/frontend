@@ -25,14 +25,14 @@ const ProfileCenter = () => {
    * empresaId = ES UNA VARIABLE TEMPORAL que sera quitada cuando exista la variable de sesión que de el id de la empresa/persona
    * table = ES UNA VARIABLE TEMPORAL que sera quitada cuando exista la variable de sesión que defina si se ingreso como empresa o como persona mostrando empresas o personas en el carrousel-
    */
-  const table = '/Personas';
-  const url = 'http://localhost:3000/api/v1';
+  const table = 'Empresas';
+  const url = 'http://localhost:3000/api/v1/';
   const { user } = useAuth();
   const [contador, setContador] = useState(0);
   const [data, setData] = useState([]);
   const [size, setSize] = useState(0);
   const [show, setShow] = useState(false);
-  const empresaId =  1;
+  const empresaId =  1;//variable temporal mientras se implementa la variable de sesión
   /**Este efecto llama a cada persona mostrada en la carta */
   useEffect(() => {
     fetchData();
@@ -60,7 +60,7 @@ const ProfileCenter = () => {
   const fetchData = async () => {
     try {
      
-      const response = await axios.get(url+table, {
+      const response = await axios.get(url+table+'/?id='+{contador}, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -95,14 +95,76 @@ const ProfileCenter = () => {
     }
    
   };
+  /**La función info muestra la información correspondiente a personas o empresas dependiendo del tipo de usuario que ingresa a la sesión */
+  const InfoTitular = ({base}) => {
+    if(base == 'Empresas'){
+      return(
+        <h3>
+          {data.nombre_empresa}
+        </h3>)
+      
+    }
+    else if(base== 'Personas'){
+      return(
+      <h3>
+        {data.nombre_persona}&nbsp;{data.apellido_persona}
+      </h3>);
+    }
+  };
+  const InfoModal = ({base}) => {
+    if(base == 'Empresas'){
+      return ( <Modal
+        show={show}
+        onHide={() => setShow(false)}
+        dialogClassName="modal-90w"
+        aria-labelledby="example-custom-modal-styling-title"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-custom-modal-styling-title">
+          {data.nombre_empresa}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+          La empresa {data.nombre_empresa}&nbsp;{data.apellido_persona} esta ubicada en  {data.direccion} y su numero de contacto es
+           {data.telefono_empresa} adem'as su correo de contacto es {data.email}.
+            <br />
+            Si deseas contactar con la empresa hazlo directamente con ellos.
+          </p>
+        </Modal.Body>
+      </Modal> 
+     );
+    }
+    else if(base == 'Personas'){
+      return(<Modal
+        show={show}
+        onHide={() => setShow(false)}
+        dialogClassName="modal-90w"
+        aria-labelledby="example-custom-modal-styling-title"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-custom-modal-styling-title">
+          {data.nombre_persona}&nbsp;{data.apellido_persona}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+          El usuario {data.nombre_persona}&nbsp;{data.apellido_persona} ofrece sus servicios en {data.precio_servicio} precio
+            y cuenta con {data.calificacion} hasta la fecha.
+            <br />
+            Si deseas contactar con el no dudes en dar un cocoro para asignar un nuevo servicio
+          </p>
+        </Modal.Body>
+      </Modal>
+    );
+    }
+  };
   return (
     <>
   
       <div id="contenedorGeneral">
         <NavMenu></NavMenu>
-        <h3>
-          {data.nombre_persona}&nbsp;{data.apellido_persona}
-        </h3>
+        <InfoTitular base={table}/>
         <button className="elements"
         onClick={() => setShow(true)}>
           <img src={persona} id="imagenProfile"></img>
@@ -150,26 +212,7 @@ const ProfileCenter = () => {
           </button>
         </div>
       </div>
-      <Modal
-        show={show}
-        onHide={() => setShow(false)}
-        dialogClassName="modal-90w"
-        aria-labelledby="example-custom-modal-styling-title"
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="example-custom-modal-styling-title">
-          {data.nombre_persona}&nbsp;{data.apellido_persona}
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>
-          El usuario {data.nombre_persona}&nbsp;{data.apellido_persona} ofrece sus servicios en {data.precio_servicio} precio
-            y cuenta con {data.calificacion} hasta la fecha.
-            <br />
-            Si deseas contactar con el no dudes en dar un cocoro para asignar un nuevo servicio
-          </p>
-        </Modal.Body>
-      </Modal>
+      <InfoModal base={table}/>
     </>
   );
 };
