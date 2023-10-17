@@ -25,7 +25,7 @@ const ProfileCenter = () => {
    * empresaId = ES UNA VARIABLE TEMPORAL que sera quitada cuando exista la variable de sesión que de el id de la empresa/persona
    * table = ES UNA VARIABLE TEMPORAL que sera quitada cuando exista la variable de sesión que defina si se ingreso como empresa o como persona mostrando empresas o personas en el carrousel-
    */
-  const table = 'Empresas';
+  const table = 'Personas';
   const url = 'http://localhost:3000/api/v1/';
   const { user } = useAuth();
   const [contador, setContador] = useState(0);
