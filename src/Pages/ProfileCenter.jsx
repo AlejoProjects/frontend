@@ -25,15 +25,16 @@ const ProfileCenter = () => {
    * empresaId = ES UNA VARIABLE TEMPORAL que sera quitada cuando exista la variable de sesión que de el id de la empresa/persona
    * table = ES UNA VARIABLE TEMPORAL que sera quitada cuando exista la variable de sesión que defina si se ingreso como empresa o como persona mostrando empresas o personas en el carrousel-
    */
-  const table = 'Personas';
   const url = 'http://localhost:3000/api/v1/';
   const { user } = useAuth();
   const [contador, setContador] = useState(0);
   const [data, setData] = useState([]);
   const [size, setSize] = useState(0);
   const [show, setShow] = useState(false);
-  const empresaId =  user.id;//variable temporal mientras se implementa la variable de sesión
-  
+  const id =  user.id;//variable temporal mientras se implementa la variable de sesión
+  const table = user.table;
+  let valores ={};
+ 
   /**Este efecto llama a cada persona mostrada en la carta */
   useEffect(() => {
     fetchData();
@@ -193,12 +194,22 @@ const ProfileCenter = () => {
           <button
             className="elements"
             onClick={async () => {
-              const valores = {
-                fk_empresa_id: empresaId,
-                fk_persona_id: data.id_persona,
-                nombre_servicio: "match",
-                descripción: "se ha generado la solicitud del servicio"
-              };
+              if (user.type === 'empresa') {
+
+                valores = {
+                  fk_empresa_id: id,
+                  fk_persona_id: data.id_persona,
+                  nombre_servicio: "match",
+                  descripción: "se ha generado la solicitud del servicio"
+                };
+              } else if (user.type === 'user') {
+                valores = {
+                  fk_empresa_id: data.id,
+                  fk_persona_id: user.id,
+                  nombre_servicio: "match",
+                  descripción: "se ha generado la solicitud del servicio"
+                };
+              }
               //creación de servicio
               try {
                 const response = await axios.post(url+`/Servicios`, valores);
