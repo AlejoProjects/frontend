@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "./AuthContext";
 import NewUserForm from "./createNewUser";
+import { Link} from 'react-router-dom';
 // import NewUserForm from "./createNewUser";
 
 
@@ -23,6 +24,12 @@ const Home = () => {
     setDatos(newDatos);
   };
   const { updateUser } = useAuth();
+  
+  
+
+
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,7 +52,11 @@ const Home = () => {
       }
     }
   }
-
+  
+    const handleNavigate = () => {
+      navigate('/createNewUser'); // Replace '/another-page' with the URL of the page you want to navigate to.
+    };
+  
   return (
     <>
       <div className="logo-box">
@@ -74,14 +85,16 @@ const Home = () => {
           <input id="password" type="password" onChange={handleInputChage} value={datos.password} placeholder="Contraseña" name="password" required />
           <button>Ingresar</button>
         </form>
+       
+        
         <div>
         <button>Forget Password</button>
         <p>
           Don't Have an account
-            <button className="texto" onClick={() => setShow(true)}>
+            <button className="texto" onClick={handleNavigate}>
               Register New Account</button>
               
-              {show && <NewUserForm show={show}  onHide={() => setShow(false)} /> }
+             
             </p>
         </div>
 
@@ -90,7 +103,7 @@ const Home = () => {
       </div>
     </>
   );
-};
+}
 
 
 export default Home;
