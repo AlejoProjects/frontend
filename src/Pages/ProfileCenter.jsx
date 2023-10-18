@@ -68,7 +68,6 @@ const ProfileCenter = () => {
       console.log("el contador es "+contador);
       const jsonData = response.data.message[contador];
       setData(jsonData);
-
     } catch (error) {
       console.log('Ocurrió un error en la consulta ' + error.message);
     }
