@@ -1,8 +1,0 @@
-#divisorPrincipal {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-h1 {
-    margin-left: 40px;
-}
