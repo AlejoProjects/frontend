@@ -1,10 +1,14 @@
-import React,{ useState } from "react";
-import axios  from "axios";
+import React, { useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../css/login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire } from "@fortawesome/free-solid-svg-icons";
-import { useAuth } from "./AuthContext"
+import { useAuth } from "./AuthContext";
+import NewUserForm from "./createNewUser";
+import { Link} from 'react-router-dom';
+// import NewUserForm from "./createNewUser";
+
 
 
 
@@ -13,9 +17,9 @@ const Home = () => {
   const url = 'http://localhost:3000/api/v1';
   const navigate = useNavigate();
 
-const handleInputChage = (e) => {
-  let {name, value} = e.target;
-  let newDatos = {...datos, [name]: value};
+  const handleInputChage = (e) => {
+    let { name, value } = e.target;
+    let newDatos = { ...datos, [name]: value };
 
   setDatos(newDatos);
 };
@@ -31,20 +35,24 @@ const handleSubmit = async (e)=> {
       const typeUserCheck = datos.type;
       const idDinamico = typeUserCheck === "user" ? res.data.ndatos[0].id_persona : res.data.ndatos[0].id;
 
-      console.log(res.data);
-      //console.log(`id: ${idDinamico}, token: ${res.data.ndatos.token}`);
-      updateUser({ id: idDinamico, token: res.data.ndatos.token, type: typeUserCheck });
-      if (res.status == 200 && typeUserCheck === "user") {
+        console.log(res.data);
+        //console.log(`id: ${idDinamico}, token: ${res.data.ndatos.token}`);
+        updateUser({ id: idDinamico, token: res.data.ndatos.token, type: typeUserCheck });
+        if (res.status == 200 && typeUserCheck === "user") {
         navigate("/services")
       } else if (res.status == 200 && typeUserCheck ==="empresa") {
-        navigate("/user")
+          navigate("/user")
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   }
-}
-
+  
+    const handleNavigate = () => {
+      navigate('/createNewUser'); // Replace '/another-page' with the URL of the page you want to navigate to.
+    };
+  
   return (
     <>
       <div className="body-login">
@@ -73,18 +81,29 @@ const handleSubmit = async (e)=> {
 
         <input id="email" type="text" onChange={handleInputChage} value={datos.email} placeholder="Correo electrónico" name = "email" required className="texto"/>
 
-        <input id="password" type="password" onChange={handleInputChage} value={datos.password} placeholder="Contraseña" name= "password" required  className="texto"/>
-        <button>Ingresar</button>
-      </form>
-      <button  className="texto">Forget Password</button>
-      <p>
-        Don't Have an account<a>Sign up</a>
-      </p>
-    </div>
+          <input id="password" type="password" onChange={handleInputChage} value={datos.password} placeholder="Contraseña" name="password" required  className="texto"/>
+          <button>Ingresar</button>
+        </form>
+       
+        
+        <div>
+        <button  className="texto">Forget Password</button>
+        <p>
+          Don't Have an account
+            <button className="texto" onClick={handleNavigate}>
+              Register New Account</button>
+              
+             
+            </p>
+        </div>
+
+          
+        
+      </div>
     </div>
     </>
   );
-};
+}
 
 
 export default Home;
