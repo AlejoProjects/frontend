@@ -31,7 +31,6 @@ const ProfileCenter = () => {
   const [data, setData] = useState([]);
   const [size, setSize] = useState(0);
   const [show, setShow] = useState(false);
-  const id =  user.id;//variable temporal mientras se implementa la variable de sesión
   const table = user.table;
   let valores ={};
  
@@ -197,7 +196,7 @@ const ProfileCenter = () => {
               if (user.type === 'empresa') {
 
                 valores = {
-                  fk_empresa_id: id,
+                  fk_empresa_id: user.id,
                   fk_persona_id: data.id_persona,
                   nombre_servicio: "match",
                   descripción: "se ha generado la solicitud del servicio"

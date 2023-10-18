@@ -19,10 +19,16 @@ const Home = () => {
 
   const handleInputChage = (e) => {
     let { name, value } = e.target;
-    let newDatos = { ...datos, [name]: value };
-
-  setDatos(newDatos);
-};
+      if (name === "type") {
+        // For the 'type' field, set the value and also update 'table'
+        const newTableValue = value === "empresa" ? "Personas" : "Empresas";
+        setDatos({ ...datos, [name]: value, table: newTableValue });
+      } else {
+        // For other fields, update as usual
+        let newDatos = { ...datos, [name]: value };
+        setDatos(newDatos);
+      }
+  };
 const { updateUser } = useAuth();
 
 const handleSubmit = async (e)=> {
@@ -33,16 +39,14 @@ const handleSubmit = async (e)=> {
     try {
       let res = await axios.post(url+"/Login/", datos);
       const typeUserCheck = datos.type;
+      const dataBaseCheck = datos.table;
       const idDinamico = typeUserCheck === "user" ? res.data.ndatos[0].id_persona : res.data.ndatos[0].id;
 
-        console.log(res.data);
-        //console.log(`id: ${idDinamico}, token: ${res.data.ndatos.token}`);
-        updateUser({ id: idDinamico, token: res.data.ndatos.token, type: typeUserCheck });
-        if (res.status == 200 && typeUserCheck === "user") {
-        navigate("/services")
-      } else if (res.status == 200 && typeUserCheck ==="empresa") {
-          navigate("/user")
-        }
+      console.log(res.data);
+      //console.log(`id: ${idDinamico}, token: ${res.data.ndatos.token}`);
+      updateUser({ id: idDinamico, token: res.data.ndatos.token, type: typeUserCheck, table:dataBaseCheck});
+         navigate("/user")
+        
       } catch (error) {
         console.log(error);
       }
