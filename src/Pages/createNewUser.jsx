@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const UserForm = () => {
+const NewUserForm = () => {
     const [formData, setFormData] = useState({
         userType: '',
         nombre_persona: '',
@@ -12,7 +12,7 @@ const UserForm = () => {
         perfil: '',
         calificacion: '',
         status: '',
-
+        //empresa
         nit: '',
         nombre_empresa: '',
         direccion: '',
@@ -220,4 +220,4 @@ const UserForm = () => {
     );
 };
 
-export default UserForm;
+export default NewUserForm;
