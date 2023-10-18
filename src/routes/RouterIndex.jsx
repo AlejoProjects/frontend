@@ -3,7 +3,7 @@ import Home from "../Pages/Home";
 import ProfileCenter from "../Pages/ProfileCenter";
 import ServiceCenter from "../Pages/ServiceCenter";
 import Configuration from "../Pages/configuration";
-
+import NewUserForm from "../Pages/createNewUser";
 
 const RouterIndex = () => {
   return (
@@ -12,7 +12,7 @@ const RouterIndex = () => {
       <Route path="/user" element={<ProfileCenter />} />
       <Route path="/services" element={<ServiceCenter />} />
       <Route path='/configuration' element={<Configuration/>} />
-      
+      <Route path="/createNewUser" element={<NewUserForm/>} />
      
     </Routes>
   );
