@@ -32,7 +32,8 @@ const ProfileCenter = () => {
   const [data, setData] = useState([]);
   const [size, setSize] = useState(0);
   const [show, setShow] = useState(false);
-  const empresaId =  1;//variable temporal mientras se implementa la variable de sesión
+  const empresaId =  user.id;//variable temporal mientras se implementa la variable de sesión
+  
   /**Este efecto llama a cada persona mostrada en la carta */
   useEffect(() => {
     fetchData();
@@ -65,12 +66,16 @@ const ProfileCenter = () => {
           Authorization: `Bearer ${user.token}`,
         },
       });
-      console.log("el contador es "+contador);
+
       const jsonData = response.data.message[contador];
       setData(jsonData);
     } catch (error) {
       console.log('Ocurrió un error en la consulta ' + error.message);
     }
+  };
+  const newSort = () => {
+  
+
   };
   /**La función resetear contador pone los limites superiores e inferiores del carrousel para saber en donde volver a iniciar la muestra de individuos. */
   const resetearContador = (value) => {
