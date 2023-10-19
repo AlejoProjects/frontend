@@ -168,8 +168,7 @@ const ProfileCenter = () => {
   };
   const cambiarImagen = ()=>{
     if(counter <= 10){
-    const dir = "src/assets/";
-    setPersona(dir + {counter}+".png");
+    setPersona(`src/assets/${contador}.png`);
     };
   };
   return (
