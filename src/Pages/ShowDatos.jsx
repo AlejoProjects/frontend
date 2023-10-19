@@ -6,8 +6,8 @@ import { faPenToSquare,faTrash } from "@fortawesome/free-solid-svg-icons";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import NavMenu from "./NavMenu";
-import ConfigurationElement from "src/Pages/configurationPages/ConfiguracionElemento";
-import ConfigurationPassword from "src/Pages/configurationPages/ConfigurationPassword";
+import ConfiguracionElement from "src/Pages/configuracionPages/ConfiguracionElemento";
+import ConfigurationPassword from "src/Pages/configuracionPages/ConfigurationPassword";
 import "src/css/Configuration.css";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.js"
@@ -61,7 +61,7 @@ const ShowDatos = () => {
       const MySwal = withReactContent(Swal); 
       campo != 'password' ?
       await MySwal.fire({
-        html: <ConfigurationElement id={id} typeUser={typeUser} campo={campo} email={validator} nit = {typeUser == 'empresa' ? nit : undefined}/>,
+        html: <ConfiguracionElement id={id} typeUser={typeUser} campo={campo} email={validator} nit = {typeUser == 'empresa' ? nit : undefined}/>,
         showConfirmButton: false, // Opciones personalizadas para SweetAlert2
       }) : await MySwal.fire({
         html: <ConfigurationPassword id={id} typeUser={typeUser} />,
