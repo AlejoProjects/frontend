@@ -12,7 +12,7 @@ import "/src/css/Logi.css";
 
 
 const Home = () => {
-  const [datos, setDatos] = useState({email: "",type: "",password: ""});
+  const [datos, setDatos] = useState({email: "",type: "",password: "",table:""});
   const url = 'https://tinderhabilidadesapiv1.fly.dev/api/v1';
   const navigate = useNavigate();
 
