@@ -21,7 +21,7 @@ const Home = () => {
     let { name, value } = e.target;
       if (name === "type") {
         // For the 'type' field, set the value and also update 'table'
-        const newTableValue = value === "empresa" ? "Personas" : "Empresas";
+        const newTableValue = value === "empresa" ? "Personas" : "Empresas";//selecciona el campo de type y define los valores predeterminados para user y empresa de table
         setDatos({ ...datos, [name]: value, table: newTableValue });
       } else {
         // For other fields, update as usual
