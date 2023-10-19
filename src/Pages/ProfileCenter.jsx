@@ -7,16 +7,8 @@ import { useAuth } from "./AuthContext";
 import axios from "axios";
 import Modal from 'react-bootstrap/Modal';
 import NavMenu from "./NavMenu";
-import i1 from "/opt/build/repo/src/assets/images/1.png";
-import i2 from "/opt/build/repo/src/assets/images/2.png";
-import i3 from "/opt/build/repo/src/assets/images/3.png";
-import i4 from "/opt/build/repo/src/assets/images/4.png";
-import i5 from "/opt/build/repo/src/assets/images/5.png";
-import i6 from "/opt/build/repo/src/assets/images/6.png";
-import i7 from "/opt/build/repo/src/assets/images/7.png";
-import i8 from "/opt/build/repo/src/assets/images/8.png";
-import i9 from "/opt/build/repo/src/assets/images/9.png";
-import i10 from "/opt/build/repo/src/assets/images/10.png";
+import i1 from "/src/assets/images/1.png";
+
 
 
 
