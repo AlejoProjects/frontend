@@ -1,5 +1,5 @@
-import Entities from "src/Pages/Entities";
 import NavMenu from "./NavMenu";
+import {Entities} from "src/Pages/Entities";
 import "/src/css/Services.css";
 import { useEffect } from "react";
 const ServiceCenter = () => {

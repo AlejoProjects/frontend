@@ -3,7 +3,7 @@ import Home from "../Pages/Home";
 import ProfileCenter from "../Pages/ProfileCenter";
 import ServiceCenter from "../Pages/ServiceCenter";
 import Configuration from "../Pages/ShowDatos";
-import NewUserForm from "../Pages/createNewUser";
+import NewUserForm from "../Pages/NewUserForm";
 
 const RouterIndex = () => {
   return (
