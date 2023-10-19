@@ -14,7 +14,7 @@ import { Link} from 'react-router-dom';
 
 const Home = () => {
   const [datos, setDatos] = useState({email: "",type: "",password: ""});
-  const url = 'http://localhost:3000/api/v1';
+  const url = 'https://tinderhabilidadesapiv1.fly.dev/api/v1';
   const navigate = useNavigate();
 
   const handleInputChage = (e) => {

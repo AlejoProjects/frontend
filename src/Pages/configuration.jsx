@@ -16,7 +16,7 @@ import withReactContent from 'sweetalert2-react-content';
 
 
 const showDatos = () => {
-  const url = 'http://localhost:3000/api/v1';
+  const url = 'https://tinderhabilidadesapiv1.fly.dev/api/v1';
   const {user} = useAuth();
   
   const [usuario, setUsuario] = useState(null);

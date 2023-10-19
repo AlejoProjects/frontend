@@ -36,7 +36,7 @@ const ConfigurationPassword  = (props) =>  {
     if (passwords) {
       const currentPassword = passwords[0];
       const newPassword = passwords[1];
-      const url ='http://localhost:3000/api/v1'
+      const url ='https://tinderhabilidadesapiv1.fly.dev/api/v1'
       let route =''
       if (typeUser == 'user') {
         route ='Personas/passwordUpdate'
