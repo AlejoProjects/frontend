@@ -1,5 +1,5 @@
-import "/opt/build/repo/src/assets/persona.png"
-import persona from "/opt/build/repo/src/css/services.css";
+import persona from "/opt/build/repo/src/assets/persona.png";
+import "/opt/build/repo/src/css/services.css";
 const Entities = (props) => {
   return (
     <>
