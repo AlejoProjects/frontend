@@ -1,7 +1,7 @@
 //import { useState } from 'react'
 import NavMenu from "./Nav.jsx";
 import Entities from "./entities";
-import "../css/services.css";
+import "src/css/profileCenter.css";
 import { useEffect } from "react";
 const ServiceCenter = () => {
   const url = 'https://tinderhabilidadesapiv1.fly.dev/api/v1';
