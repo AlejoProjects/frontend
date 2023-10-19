@@ -6,7 +6,7 @@ import { faPenToSquare,faTrash } from "@fortawesome/free-solid-svg-icons";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import NavMenu from "./NavMenu";
-import ConfigurationElement from "./configurationPages/";
+import ConfigurationElement from "./configurationPages/ConfigurationElement";
 import ConfigurationPassword from "./configurationPages/ConfigurationPassword";
 import "/opt/build/repo/src/css/Configuration.css";
 import "bootstrap/dist/css/bootstrap.min.css"
