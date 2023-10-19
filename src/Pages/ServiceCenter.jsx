@@ -1,5 +1,5 @@
 //import { useState } from 'react'
-import NavMenu from "src/Pages/Nav.jsx";
+import NavMenu from "./Nav.jsx";
 import Entities from "./entities";
 import "../css/services.css";
 import { useEffect } from "react";
