@@ -179,7 +179,7 @@ const ProfileCenter = () => {
         <InfoTitular base={table}/>
         <button className="elements"
         onClick={() => setShow(true)}>
-          <img src={persona} id="imagenProfile"></img>
+          <img src={persona} id="imagenProfile"  alt={`Image ${counter}`}></img>
         </button>
         <div className="row_elements profile_icons">
           <button
