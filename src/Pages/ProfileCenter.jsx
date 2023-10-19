@@ -33,7 +33,7 @@ const ProfileCenter = () => {
   const [data, setData] = useState([]);
   const [size, setSize] = useState(0);
   const [show, setShow] = useState(false);
-  const [persona,setPersona] = useState("/opt/build/repo/src/assets/1.png");
+  const [persona,setPersona] = useState("src/assets/1.png");
   const table = user.table;
   let valores ={};
  
@@ -168,7 +168,7 @@ const ProfileCenter = () => {
   };
   const cambiarImagen = ()=>{
     if(counter <= 10){
-    const dir = "/opt/build/repo/src/assets/";
+    const dir = "src/assets/";
     setPersona(dir + {counter}+".png");
     };
   };
