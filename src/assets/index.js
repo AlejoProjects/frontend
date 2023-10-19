@@ -7,7 +7,7 @@ import i6 from "./6.png";
 import i7 from "./7.png";
 import i8 from "./8.png";
 import i9 from "./9.png";
-import i10 from ".10.png";
+import i10 from "./10.png";
 
 export { i1, 
         i2,
