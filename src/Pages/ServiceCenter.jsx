@@ -1,6 +1,6 @@
 //import { useState } from 'react'
 import NavMenu from "./NavMenu";
-import Entities from " ./Entities";
+import Entities from "./Entities";
 import "/opt/build/repo/src/css/services.css";
 import { useEffect } from "react";
 const ServiceCenter = () => {
