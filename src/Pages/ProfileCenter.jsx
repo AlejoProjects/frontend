@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faX, faBolt, faRefresh, faStar, } from "@fortawesome/free-solid-svg-icons";
-import "../css/ProfileCenter.css";
+import "src/css/profileCenter.css";
+//import "../css/ProfileCenter.css";
 import persona from "../assets/persona.jpg";
 import NavMenu from "./nav";
 import axios from "axios";
