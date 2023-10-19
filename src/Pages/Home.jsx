@@ -90,11 +90,11 @@ const handleSubmit = async (e)=> {
        
         
         <div>
-        <button ><p  className="texto">Forget Password</p></button>
+        <button ><span  className="texto">Forget Password</span></button>
         <p>
           Don't Have an account
             <button  onClick={handleNavigate}>
-              <p className="texto">Register New Account</p></button>
+              <span className="texto">Register New Account</span></button>
               
              
             </p>
