@@ -1,21 +1,20 @@
+import axios  from "axios";
+import { useAuth } from "./AuthContext";
 import React,{ useState, useEffect} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare,faTrash } from "@fortawesome/free-solid-svg-icons";
-import NavMenu from "/opt/build/repo/src/Pages/nav";
-//import persona from "../assets/persona.png";
-import ConfigurationElement from "./configurationPages/configurationElement";
-import ConfigurationPassword from "./configurationPages/configurationPassword";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import NavMenu from "./NavMenu";
+import ConfigurationElement from "./configurationPages/ConfigurationElement";
+import ConfigurationPassword from "./configurationPages/ConfigurationPassword";
 import "/opt/build/repo/src/css/configuration.css";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.js"
-import axios  from "axios";
-import { useAuth } from "./AuthContext";
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 
 
 
-const showDatos = () => {
+const ShowDatos = () => {
   const url = 'https://tinderhabilidadesapiv1.fly.dev/api/v1';
   const {user} = useAuth();
   
@@ -259,6 +258,6 @@ const showDatos = () => {
   )
 }
 
-export default showDatos
+export default ShowDatos;
 
 

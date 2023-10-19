@@ -1,13 +1,15 @@
+import "/opt/build/repo/src/css/ProfileCenter.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faX, faBolt, faRefresh, faStar, } from "@fortawesome/free-solid-svg-icons";
-import "/opt/build/repo/src/Pages/ProfileCenter.jsx";
-import persona from " /opt/build/repo/src//assets/persona.jpg";
-import NavMenu from " /opt/build/repo/src/Pages/nav";
-import axios from "axios";
 import { useAuth } from "./AuthContext";
+import axios from "axios";
 import Modal from 'react-bootstrap/Modal';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import NavMenu from "./NavMenu";
+import persona from "/opt/build/repo/src/assets/persona.jpg";
+
+
 
 
 
@@ -25,7 +27,7 @@ const ProfileCenter = () => {
    * empresaId = ES UNA VARIABLE TEMPORAL que sera quitada cuando exista la variable de sesión que de el id de la empresa/persona
    * table = ES UNA VARIABLE TEMPORAL que sera quitada cuando exista la variable de sesión que defina si se ingreso como empresa o como persona mostrando empresas o personas en el carrousel-
    */
-  const url = 'https://tinderhabilidadesapiv1.fly.dev/api/v1/';
+  const url = 'http://localhost:3000/api/v1/';
   const { user } = useAuth();
   const [contador, setContador] = useState(0);
   const [data, setData] = useState([]);
