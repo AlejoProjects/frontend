@@ -1,10 +1,21 @@
-export const i1 = require('./1.png');
-export const i2 = require('./2.png');
-export const i3 = require('./3.png');
-export const i4 = require('./4.png');
-export const i5 = require('./5.png');
-export const i6 = require('./6.png');
-export const i7 = require('./7.png');
-export const i8 = require('./8.png');
-export const i9 = require('./9.png');
-export const i19 = require('./10.png');
+import i1 from "./1.png";
+import i2 from "./2.png";
+import i3 from "./3.png";
+import i4 from "./4.png";
+import i5 from "./5.png";
+import i6 from "./6.png";
+import i7 from "./7.png";
+import i8 from "./8.png";
+import i9 from "./9.png";
+import i10 from ".10.png";
+
+export { i1, 
+        i2,
+        i3, 
+        i4, 
+        i5, 
+        i6, 
+        i7, 
+        i8, 
+        i9, 
+        i10};
