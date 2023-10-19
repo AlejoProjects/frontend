@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faX, faBolt, faRefresh, faStar, } from "@fortawesome/free-solid-svg-icons";
-import "opt/build/repo/src/Pages/ProfileCenter.jsx";
-import persona from " opt/build/repo/src//assets/persona.jpg";
-import NavMenu from " opt/build/repo/src/Pages/nav";
+import "/opt/build/repo/src/Pages/ProfileCenter.jsx";
+import persona from " /opt/build/repo/src//assets/persona.jpg";
+import NavMenu from " /opt/build/repo/src/Pages/nav";
 import axios from "axios";
 import { useAuth } from "./AuthContext";
 import Modal from 'react-bootstrap/Modal';
