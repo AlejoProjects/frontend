@@ -7,7 +7,13 @@ import { useAuth } from "./AuthContext";
 import axios from "axios";
 import Modal from 'react-bootstrap/Modal';
 import NavMenu from "./NavMenu";
-import i1 from "/src/assets/1.png";
+import {i1,i2,i3,i4,i5,i6,i7,i8,i9,i10} from "/opt/build/repo/src/assets/";
+
+
+
+
+
+
 //import { useParams } from "react-router-dom";
 const ProfileCenter = () => {
   /**ProfileCenter muestra la parte de selección de personas o empresas por medio del carrousel
