@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComments, faUser,faFire } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import "/opt/build/repo/src/css/navMenu.css";
+import "/opt/build/repo/src/css/NavMenu.css";
 
 const NavMenu = () => {
   return (

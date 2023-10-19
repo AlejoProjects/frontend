@@ -8,7 +8,7 @@ import withReactContent from 'sweetalert2-react-content';
 import NavMenu from "./NavMenu";
 import ConfigurationElement from "./configurationPages/ConfigurationElement";
 import ConfigurationPassword from "./configurationPages/ConfigurationPassword";
-import "/opt/build/repo/src/css/configuration.css";
+import "/opt/build/repo/src/css/Configuration.css";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.js"
 
