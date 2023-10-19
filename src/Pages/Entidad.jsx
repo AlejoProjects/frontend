@@ -1,5 +1,5 @@
 import persona from "/src/assets/persona.png";
-import "/src/css/Services.css";
+import "/src/css/Servicio.css";
 const Entidad = (props) => {
   return (
     <>
