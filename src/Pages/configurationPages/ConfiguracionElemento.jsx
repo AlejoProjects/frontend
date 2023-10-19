@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 
-const ConfigurationElement  = (props) =>  {
+const ConfiguracionElemento  = (props) =>  {
   const MySwal = withReactContent(Swal); 
   console.log(props);
   const {id, typeUser, campo,email,nit} = props;
@@ -77,5 +77,5 @@ const ConfigurationElement  = (props) =>  {
    )
 }
   
-export default ConfigurationElement;
+export default ConfiguracionElemento;
   
