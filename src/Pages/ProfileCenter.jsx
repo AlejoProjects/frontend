@@ -33,7 +33,7 @@ const ProfileCenter = () => {
   const [data, setData] = useState([]);
   const [size, setSize] = useState(0);
   const [show, setShow] = useState(false);
-  const [persona,setPersona] = useState("src/assets/1.png");
+  const [persona,setPersona] = useState("../assets/1.png");
   const table = user.table;
   let valores ={};
  
@@ -76,10 +76,7 @@ const ProfileCenter = () => {
       console.log('Ocurrió un error en la consulta ' + error.message);
     }
   };
-  const newSort = () => {
-  
 
-  };
   /**La función resetear contador pone los limites superiores e inferiores del carrousel para saber en donde volver a iniciar la muestra de individuos. */
   const resetearContador = (value) => {
     switch(value){
@@ -168,7 +165,7 @@ const ProfileCenter = () => {
   };
   const cambiarImagen = ()=>{
     if(contador <= 10){
-    setPersona(`src/assets/${contador}.png`);
+    setPersona(`../assets/${contador}.png`);
     };
   };
   return (
