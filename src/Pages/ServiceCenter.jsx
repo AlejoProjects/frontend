@@ -1,10 +1,10 @@
 //import { useState } from 'react'
-import NavMenu from "./Nav.jsx";
-import Entities from "./entities";
-import "../css/services.css";
+import NavMenu from "src/Pages/nav.jsx";
+import Entities from " opt/build/repo/src/Pages/entities";
+import " opt/build/repo/src/css/services.css";
 import { useEffect } from "react";
 const ServiceCenter = () => {
-  const url = 'https://tinderhabilidadesapiv1.fly.dev/api/v1';
+  const url = 'http://localhost:3000/api/v1';
   useEffect(() => {
     fetchServices();
   });

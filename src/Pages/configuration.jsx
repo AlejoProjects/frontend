@@ -1,7 +1,7 @@
 import React,{ useState, useEffect} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare,faTrash } from "@fortawesome/free-solid-svg-icons";
-import NavMenu from "./nav";
+import NavMenu from "opt/build/repo/src/Pages/nav";
 //import persona from "../assets/persona.png";
 import ConfigurationElement from "./configurationPages/configurationElement";
 import ConfigurationPassword from "./configurationPages/configurationPassword";

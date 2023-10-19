@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
-import AddHabilidad from "./addHabilidad";
+//import AddHabilidad from "./addHabilidad";
 
 const ConfiguracionHabilidades = () => {
   /**Debemos ingresar la ruta para las habilidades */
