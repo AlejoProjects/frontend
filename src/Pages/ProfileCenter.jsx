@@ -1,4 +1,4 @@
-import "/opt/build/repo/src/css/ProfileCenter.css";
+import "/opt/build/repo/src/css/Profile.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
