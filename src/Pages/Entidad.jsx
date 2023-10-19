@@ -5,7 +5,7 @@ const Entidad = (props) => {
       <div className="box box_size">
       <h3>habilidades{props.nombre_empresa}</h3>
       <div className="text_container">
-      <img  src="/opt/build/repo/src/assets/1.png" className=".circularPicture"/>
+      <img  src={props.imagen} className=".circularPicture"/>
       <p className="message_snipet">proceso iniciado</p>
       </div>
      </div>
