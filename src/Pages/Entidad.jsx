@@ -1,6 +1,6 @@
 import persona from "/src/assets/persona.png";
 import "/src/css/Services.css";
-const Entities = (props) => {
+const Entidad = (props) => {
   return (
     <>
       <div className="box box_size">
@@ -13,4 +13,4 @@ const Entities = (props) => {
     </>
   );
 };
-export default Entities;
+export default Entidad;
