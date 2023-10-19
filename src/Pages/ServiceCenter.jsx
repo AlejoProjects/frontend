@@ -1,6 +1,6 @@
 import NavMenu from "./NavMenu";
 import Entities from "./Entidad";
-import "/src/css/Services.css";
+import "/src/css/Servicio.css";
 import { useEffect } from "react";
 const ServiceCenter = () => {
   const url = 'http://localhost:3000/api/v1';
