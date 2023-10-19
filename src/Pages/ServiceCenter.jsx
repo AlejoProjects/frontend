@@ -1,7 +1,7 @@
 //import { useState } from 'react'
-import NavMenu from "./NavMenu";
 import Entities from "./Entities";
-import "/opt/build/repo/src/css/Services.css";
+import NavMenu from "./NavMenu";
+import "/src/css/Services.css";
 import { useEffect } from "react";
 const ServiceCenter = () => {
   const url = 'http://localhost:3000/api/v1';
