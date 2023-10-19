@@ -5,18 +5,18 @@ import { Link } from "react-router-dom";
 
 const DetalleServices = ({ }) => {
     const { id } = useParams();
-
+console.log(useParams())
     const [nombrePersona, setNombrePersona] = useState('');
     const [nombreServicio, setNombreServicio] = useState('');
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/v1/HabilidadesPersonas/${id}`)
+        fetch(`http://localhost:3000/api/v1/HabilidadesPersonas/porhabilidad/${id}`)
             .then(response => response.json())
             .then(jsonData => {
                 console.log(jsonData);
-                setNombrePersona(jsonData.message[1].nombre_persona);
-                setNombreServicio(jsonData.message[1].descripción);
+                setNombrePersona(jsonData.message.nombre_persona);
+                setNombreServicio(jsonData.message.descripción);
 
             })
             .catch(error => console.log('Ocurrió un error en la consola'));

@@ -10,7 +10,7 @@ const ServiceProviderSearch = () => {
   const [servicioSeleccionado, setServicioSeleccionado] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/v1/HabilidadesPersonas/${id}`)
+    fetch(`http://localhost:3000/api/v1/Habilidades/`)
       .then(response => response.json())
       .then(jsonData => {
         console.log(jsonData);
@@ -48,11 +48,11 @@ const ServiceProviderSearch = () => {
       />
       <br />
       {
-        servicesFiltrados.map((HabilidadesPersonas, index) => {
+        servicesFiltrados.map((Habilidad, index) => {
           return (
 
             <div className='card' key={index}> 
-              <Link to={`/DetalleServices/${id}`}>{HabilidadesPersonas.descripción}</Link>
+              <Link to={`/DetalleServices/${Habilidad.id_habilidad}`}>{Habilidad.descripción}</Link>
             </div>
             
           )
