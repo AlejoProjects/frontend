@@ -19,14 +19,14 @@ const ProfileCenter = () => {
   /**ProfileCenter muestra la parte de selección de personas o empresas por medio del carrousel
    * por el momento como no hay variables de sesión se define los fetch con la tabla de personas y no la de empresas.
    * Al recibir si es una persona o una empresa se actualiza la variable tabla
-   * counter = IMPORTANTE es la variable que almacena el id del sujeto en cuestión si es una empresa o si es una persona.
+   * contador = IMPORTANTE es la variable que almacena el id del sujeto en cuestión si es una empresa o si es una persona.
    * url = define la dirección donde se encuentran los datos
    * data = alamacena la información de la persona o empresa mostrada en el carrousel
    * size = es la cantidad de personas a mostrar en el carrousel
    * show = es una variable desginada para mostrar el modal al clickear la imagen de la persona
    * empresaId = ES UNA VARIABLE TEMPORAL que sera quitada cuando exista la variable de sesión que de el id de la empresa/persona
-   * table = ES UNA VARIABLE TEMPORAL que sera quitada cuando exista la variable de sesión que defina si se ingreso como empresa o como persona mostrando empresas o personas en el carrousel-
-   */
+   * table =Es la tabla que indica que imagenes mostrar. Esta variable se define al iniciar sesión
+   * */
   const url = 'https://tinderhabilidadesapiv1.fly.dev/api/v1/';
   const { user } = useAuth();
   const [contador, setContador] = useState(0);
@@ -167,7 +167,7 @@ const ProfileCenter = () => {
     }
   };
   const cambiarImagen = ()=>{
-    if(counter <= 10){
+    if(contador <= 10){
     setPersona(`src/assets/${contador}.png`);
     };
   };
@@ -179,7 +179,7 @@ const ProfileCenter = () => {
         <InfoTitular base={table}/>
         <button className="elements"
         onClick={() => setShow(true)}>
-          <img src={persona} id="imagenProfile"  alt={`Image ${counter}`}></img>
+          <img src={persona} id="imagenProfile"  alt={`Image ${contador}`}></img>
         </button>
         <div className="row_elements profile_icons">
           <button
