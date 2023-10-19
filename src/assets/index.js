@@ -1,0 +1,10 @@
+export const i1 = require('./1.png');
+export const i2 = require('./2.png');
+export const i3 = require('./3.png');
+export const i4 = require('./4.png');
+export const i5 = require('./5.png');
+export const i6 = require('./6.png');
+export const i7 = require('./7.png');
+export const i8 = require('./8.png');
+export const i9 = require('./9.png');
+export const i19 = require('./10.png');

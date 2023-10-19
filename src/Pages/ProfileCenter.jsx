@@ -7,7 +7,7 @@ import { useAuth } from "./AuthContext";
 import axios from "axios";
 import Modal from 'react-bootstrap/Modal';
 import NavMenu from "./NavMenu";
-
+import {i1,i2,i3,i4,i5,i6,i7,i8,i9,i10} from "src/assets/images";
 
 
 
@@ -33,7 +33,7 @@ const ProfileCenter = () => {
   const [data, setData] = useState([]);
   const [size, setSize] = useState(0);
   const [show, setShow] = useState(false);
-  const [persona,setPersona] = useState("../assets/1.png");
+  const [persona,setPersona] = useState(i1);
   const table = user.table;
   let valores ={};
  
@@ -164,8 +164,9 @@ const ProfileCenter = () => {
     }
   };
   const cambiarImagen = ()=>{
-    if(contador <= 10){
-    setPersona(`../assets/${contador}.png`);
+    const imagenes = [i1,i2,i3,i4,i5,i6,i7,i8,i9,i10];
+    if(1 < contador < 10){
+    setPersona(`i${imagenes[contador]}.png`);
     };
   };
   return (
