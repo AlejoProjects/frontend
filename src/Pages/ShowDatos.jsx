@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare,faTrash } from "@fortawesome/free-solid-svg-icons";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import NavMenu from "./NavMenu";
-import ConfiguracionElement from "src/Pages/configuracionPages/ConfiguracionElemento";
+import ConfiguracionElement from "./configuracionPages/ConfiguracionElemento";
 import ConfigurationPassword from "src/Pages/configuracionPages/ConfigurationPassword";
+import NavMenu from "./NavMenu";
 import "src/css/Configuration.css";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.js"
