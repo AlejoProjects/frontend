@@ -1,5 +1,4 @@
-//import { useState } from 'react'
-import Entities from "./Entities";
+import Entities from "src/Pages/Entities";
 import NavMenu from "./NavMenu";
 import "/src/css/Services.css";
 import { useEffect } from "react";
