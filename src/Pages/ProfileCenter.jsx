@@ -7,7 +7,7 @@ import { useAuth } from "./AuthContext";
 import axios from "axios";
 import Modal from 'react-bootstrap/Modal';
 import NavMenu from "./NavMenu";
-import persona from "/opt/build/repo/src/assets/persona.jpg";
+
 
 
 
@@ -33,6 +33,7 @@ const ProfileCenter = () => {
   const [data, setData] = useState([]);
   const [size, setSize] = useState(0);
   const [show, setShow] = useState(false);
+  const [persona,setPersona] = useState("/opt/build/repo/src/assets/1.png");
   const table = user.table;
   let valores ={};
  
@@ -165,6 +166,12 @@ const ProfileCenter = () => {
     );
     }
   };
+  const cambiarImagen = ()=>{
+    if(counter <= 10){
+    const dir = "/opt/build/repo/src/assets/";
+    setPersona(dir + {counter}+".png");
+    };
+  };
   return (
     <>
   
@@ -180,13 +187,16 @@ const ProfileCenter = () => {
             className="elements"
             onClick={() => {
             resetearContador(-1);
+            cambiarImagen();
             }}
           >
             <FontAwesomeIcon icon={faRefresh} className="icon" id="refresh" />
           </button>
           <button className="elements" onClick={() => {
-                resetearContador(1);    
+                resetearContador(1);   
+                cambiarImagen(); 
             }}>
+
             <FontAwesomeIcon icon={faX} className="icon" id="x" />
           </button>
           <button className="elements">
@@ -221,7 +231,8 @@ const ProfileCenter = () => {
                 console.error(error);
                 // Handle errors
               }
-              resetearContador(1);            
+              resetearContador(1); 
+              cambiarImagen();           
             }}
           >
             <FontAwesomeIcon icon={faHeart} className="icon" id="heart" />
