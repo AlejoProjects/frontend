@@ -2,7 +2,6 @@ import NavMenu from "./NavMenu";
 import Entities from "./Entidad";
 import "/src/css/Servicio.css";
 import axios from "axios";
-import { useEffect } from "react";
 import { useEffect, useState } from "react";
 import { useAuth } from "./AuthContext";
 
