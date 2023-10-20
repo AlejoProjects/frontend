@@ -6,6 +6,10 @@
     border-top:0;
     border-bottom:0;
 }
+.whole {
+    overflow-y: scroll;
+    max-height: 500px;
+  }
 .box {
   display:grid;
   grid-template-rows:2fr 1fr;
