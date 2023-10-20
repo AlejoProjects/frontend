@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ServiceProviderSearch = () => {
   const [services, setServices] = useState([]); 
-  const [id, setId] = useState(1);
+  const [id, setId] = useState("");
   const [filtroNombre, setFiltroNombre] = useState('');
   const [servicioSeleccionado, setServicioSeleccionado] = useState('');
 
@@ -14,7 +14,6 @@ const ServiceProviderSearch = () => {
       .then(response => response.json())
       .then(jsonData => {
         console.log(jsonData);
-        // Assuming jsonData.message[0].descripción is an array of services
         setServices(jsonData.message);
       })
       .catch(error => {
