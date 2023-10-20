@@ -29,6 +29,7 @@ const NewUserForm = () => {
             ...formData,
             [name]: value
         });
+        
     };
 
     const handleSubmit = (e) => {

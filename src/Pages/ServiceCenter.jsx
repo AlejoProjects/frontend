@@ -16,17 +16,11 @@ const ServiceCenter = () => {
 
   const fetchServices = async () => {
     try {
-      const response = await axios
-        .get(url + `/Servicios`)
-        .then((response) => {
-          const jsonData = response.data.message;
-          setServicios(jsonData);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
+      const response = await axios.get(url + `/Servicios`);
+      const jsonData = response.data.message;
+      setServicios(jsonData);
     } catch (error) {
-      console.log("Ocurrió un error en la consulta " + error.message);
+      console.error("Error fetching data:", error);
     }
   };
   const createEntities = (usuario) => {
