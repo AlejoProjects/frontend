@@ -1,8 +1,13 @@
 import "/src/css/Servicio.css";
 const Entidad = (props) => {
     console.log(props.cual);
+    const dir = "i";
+ 
 
     if(props.cual == 'user'){
+      if(0 < datos.id_persona <= 10){
+        dir = dir + datos.id;
+      }
       return (
       <>
       <div className="box box_size">
@@ -16,6 +21,9 @@ const Entidad = (props) => {
     );
     }
     else if(props.cual == 'empresa'){
+      if(0 < datos.id_persona <= 10){
+        dir = dir + datos.id_persona;
+      }
       return (
         <>
         <div className="box box_size">

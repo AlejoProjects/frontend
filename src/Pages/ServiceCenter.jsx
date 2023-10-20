@@ -56,8 +56,10 @@ const ServiceCenter = () => {
   };
   const mostrarServicios = () => {
     const usuariosPorMostrar = createEntities(tipo);
+  
     return usuariosPorMostrar.map((usuario, index) => (
-      <Entities key={index} datos={usuario} cual={tipo} />
+
+      <Entities  key={index} datos={usuario} cual={tipo} />
     ));
   };
 
