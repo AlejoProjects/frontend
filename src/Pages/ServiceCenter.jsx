@@ -1,6 +1,6 @@
 //import { useState } from 'react'
 import NavMenu from "./nav";
-import Entities from "./entities";
+import Entities from "./Entidad";
 import "../css/services.css";
 import { useEffect, useState } from "react";
 import { useAuth } from "./AuthContext";
@@ -48,7 +48,7 @@ const fetchServices = async () => {
   const mostrarServicios = () => {
     getServicios();
     return UsuariosPorMostrar.map((usuario, index) => (
-      <Entities key={index} datos={usuario} />
+      <Entities key={index} datos={usuario} cual={user.type}/>
     ));
   }
  
