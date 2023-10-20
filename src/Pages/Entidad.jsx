@@ -1,4 +1,5 @@
 import "/src/css/Servicio.css";
+import {i1,i2,i3,i4,i5,i6,i7,i8,i9,i10} from "/src/assets/";
 const Entidad = (props) => {
     console.log(props.cual);
     const dir = "i";
