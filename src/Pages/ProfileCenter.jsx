@@ -65,7 +65,7 @@ const ProfileCenter = () => {
           Authorization: `Bearer ${user.token}`,
         },
       });
-      console.log("el contador es "+contador);
+      
       const jsonData = response.data.message[contador];
       setData(jsonData);
 
