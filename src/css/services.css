@@ -6,8 +6,9 @@
     border-top:0;
     border-bottom:0;
 }
-.box {
-  
+.whole {
+  overflow-y: scroll;
+  max-height: 500px;
 }
 .box_size {
     border-top: 0.01;

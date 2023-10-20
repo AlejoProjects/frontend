@@ -33,7 +33,6 @@ const ServiceCenter = () => {
   };
   const createEntities = (usuario) => {
     let informacion = [];
-    console.log(usuario);
     switch (usuario) {
       case 'user':
         for (let i = 0; i < servicios.length; i++) {
@@ -66,7 +65,7 @@ const ServiceCenter = () => {
   return (
     <>
       <NavMenu></NavMenu>
-      <div className="box" id="service_container">
+      <div className="box whole" id="service_container">
         <div id="entities">{mostrarServicios()}</div>
       </div>
     </>

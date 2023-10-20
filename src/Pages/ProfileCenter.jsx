@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faX, faBolt, faRefresh, faStar, } from "@fortawesome/free-solid-svg-icons";
 import "../css/ProfileCenter.css";
-import persona from "../assets/persona.jpg";
 import NavMenu from "./nav";
 import axios from "axios";
 import { useAuth } from "./AuthContext";
@@ -167,7 +166,7 @@ const ProfileCenter = () => {
         <InfoTitular base={table}/>
         <button className="elements"
         onClick={() => setShow(true)}>
-          <img src={persona} id="imagenProfile"></img>
+          <img src="" id="imagenProfile"></img>
         </button>
         <div className="row_elements profile_icons">
           <button
