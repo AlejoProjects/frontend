@@ -72,6 +72,7 @@ const handleSubmit = async (e)=> {
       />
 
       <h2 className="texto">Iniciar sesión en Tinder de habilidades</h2>
+      <h2 className="text">...</h2>
       
       <hr></hr>
       <form onSubmit={handleSubmit} noValidate={true} autoComplete="off">
